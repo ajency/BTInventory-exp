@@ -1,0 +1,219 @@
+/* misc */
+.fw600	{
+	font-weight: 600;
+}
+
+.fosz18	{
+	font-size: 18px;
+}
+
+.media-body:after {
+	content: "a";
+}
+
+.flex {
+	display: flex;
+}
+
+.hidden {
+	display: none !important;
+}
+
+.text-center {
+	text-align: center;
+}
+.text-left {
+	text-align: left;
+}
+.text-right {
+	text-align: right;
+}
+.text-lighter {
+	opacity: 0.45;
+}
+
+.list-md .item-block[no-border] .item-inner {
+	border: 0;
+}
+
+.big {
+	font-size: 120%;
+}
+
+.badge-md-light {
+	color: #cecece;
+}
+
+
+.col-lb {
+	border-left: 1px solid $border-base;
+}
+
+.container {
+	max-width: 1170px;
+	margin: 0 auto;
+	&:after {
+		content: '';
+		display: table;
+		clear: both;
+	}
+}
+
+.text-wrap {
+	overflow: hidden;
+    text-overflow: ellipsis;
+}
+.text-ellipsis {
+	white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.inline-items.item-block {
+	width: auto;
+}
+
+.border-left {
+	border-left: 1px solid $border-base;
+}
+
+.prod-title {
+	// text-overflow: ellipsis;
+	// overflow: hidden;
+	// white-space: nowrap;
+	font-size: 16px;
+	// margin-top: 6px;
+	a {
+		color: #000;
+		text-decoration: none;
+	}
+}
+
+
+.footer {
+	// margin-top: 50px;
+	// border-top: 1px solid $border-base;
+	background: $bt-grey;
+}
+
+@media screen and (min-width: 768px) {
+	.visible-xs, .visible-xs-inline-block {
+		display: none !important;
+	}
+	// .hidden-xs {
+	// 	display: block !important;
+	// }
+	// .hidden-xs-inline-block {
+	// 	display: inline-block !important;
+	// }
+	// .hidden-xs-flex {
+	// 	display: flex !important;
+	// }
+}
+@media screen and (max-width: 767px) {
+	ion-app .title[padding-horizontal] {
+		padding: 0;
+	}
+	.no-p-xs {
+		padding: 0;
+	}
+	.visible-xs {
+		display: block;
+	}
+	.visible-xs-inline-block {
+		display: inline-block;
+	}
+	.hidden-xs, .hidden-xs-inline-block, .hidden-xs-flex {
+		display: none !important;
+	}
+	ion-app .content[padding-horizontal],
+	ion-app .content[padding-horizontal] .scroll-content {
+		padding: 0;
+	}
+	.bold-xs {
+		font-weight: 500;
+	}
+	.to-columns-xs {
+		flex-direction: column;
+	}
+}
+
+
+.sku {
+	display: inline-block;
+	margin-top: 4px;
+	background: $text-dark;
+	color: #fff;
+	padding: 5px 8px;
+	font-size: 12px;
+	border-radius: 25px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	max-width: 75%;
+	vertical-align: middle;
+}
+
+.dropdown-menu {
+	&>li>a {
+		padding: 8px 20px;
+	}
+	&>.active>a {
+		background: $bt-grey;
+		color: #000;
+	}
+}
+
+
+.toolbar-title.toolbar-title-md {
+	padding: 0;
+}
+.icon-small {
+	font-size: 80%;
+}
+.button {
+	box-shadow: none;
+}
+
+
+
+
+
+
+.scroll-content {
+	overflow: auto;
+}
+
+.loading-md .loading-wrapper {
+	box-shadow: none;
+	background: transparent;
+}
+ion-loading ion-backdrop {
+	background: #fff;
+	// opacity: 0.8 !important;
+}
+
+// hiding the default back btn that ionic shows
+.back-button.show-back-button {
+	display: none !important;
+}
+
+
+
+// class for the offline mode
+.app-is-offline {
+	overflow-y: visible;
+	filter: grayscale(1);
+	pointer-events: none;
+}
+
+.text-info{
+	color: $bt-blue;
+}
+.text-success{
+	color: $bt-green;
+}
+.text-grey{
+	color: darken($bt-grey, 50%);
+}

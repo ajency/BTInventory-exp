@@ -1,0 +1,37 @@
+.readd {
+	// padding: 25px;
+	&__title {
+		margin: 20px;
+		margin-bottom: 5px;
+		font-size: 16px;
+	}
+	&__single {
+		padding: 20px;
+		&, &:hover {
+			text-decoration: none;
+		}
+		&:not(:last-child) {
+			border-bottom: 1px solid $border-base;
+		}
+	}
+	&__single:hover &__head {
+		color: $bt-red;
+	}
+	&__head {
+		display: block;
+		color: $bt-blue;
+		font-size: 14px;
+		font-weight: bold;
+	}
+	&__desc {
+		margin-top: 5px;
+		display: block;
+		font-size: 13px;
+		padding-right: 15px;
+		color: rgba($text-dark, 0.45);
+	}
+	&__text {
+		padding-left: 15px;
+	}
+}
+

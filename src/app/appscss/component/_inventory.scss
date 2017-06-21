@@ -1,0 +1,9 @@
+.inventory-tabs {
+	display: flex;
+	width: 100%;
+	overflow-x: auto;
+	margin-right: -15px;
+	ul {
+		display: flex;
+	}
+}

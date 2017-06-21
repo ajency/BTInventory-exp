@@ -1,18 +1,143 @@
-<!--
-  Generated template for the StockPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
+<!-- <ion-header>
 
   <ion-navbar>
-    <ion-title>stockPage</ion-title>
+    <ion-title>Stock</ion-title>
   </ion-navbar>
 
-</ion-header>
+</ion-header> -->
 
 
 <ion-content padding>
+
+	<div class="container" padding-horizontal>
+		<div class="header-secondary replace-header">
+			<ul class="nav sku-menu">
+				<li (click)="goBack()" class="visible-xs sku-menu__hb"> <ion-icon name="ios-arrow-back"></ion-icon></li>
+				<!-- <li class="pri-menu__title"><h2>Import product details from a CSV</h2></li> -->
+				<li class="sku-menu__wrap inventory-tabs show-white">
+					<ul class="sku-menu__full">
+						<li class="active" [class.active]=""><a >Active (1,066)</a></li>
+						<li [class.active]=""><a  class="">To Ship (250)</a></li>
+						<li [class.active]=""><a  class="">Low Stock (15)</a></li>
+						<li [class.active]=""><a  class="">Stock-outs (783)</a></li>
+						<li [class.active]=""><a  class="">Bundles (0)</a></li>
+						<li [class.active]=""><a  class="">All (1,066)</a></li>
+						<li [class.active]=""><a  class="">Unlisted (5)</a></li>
+						<li [class.active]=""><a  class="">Archived (0)</a></li>
+					</ul>
+				</li>
+				<li class="buttons-right hidden-xs">
+					<ul class="sku-menu__full">
+						<li><a>Update Channel - Sku Mapping</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+
+		<div class="tabular">
+			<div class="tabular__header flex hidden-xs">
+				<div class="tabular__cell cell-1 t-check">
+					<ion-item no-padding>
+						<ion-checkbox color="dark" no-padding></ion-checkbox>
+					</ion-item>
+				</div>
+				<div class="tabular__cell cell-9 t-product">SKU/Product Title/Family</div>
+				<div class="tabular__cell cell-6 t-alias">Alias(es)</div>
+				<div class="tabular__cell cell-5 t-sell">Sellable</div>
+				<div class="tabular__cell cell-2 t-ship">To Ship</div>
+				<div class="tabular__cell cell-5 t-channel">Channels</div>
+			</div>
+
+			<!-- .... the loader .... -->
+			<div class="tabular__row flex has-anim-loader hidden">
+				<div class="masked masked--prices">
+					<div class="masked__bg">
+						<div class="masked__elements">
+							<div class="masked__elem masked--1"></div>
+							<div class="masked__elem masked--2"></div>
+							<div class="masked__elem masked--3"></div>
+							<div class="masked__elem masked--4"></div>
+							<div class="masked__elem masked--5"></div>
+							<div class="masked__elem masked--6"></div>
+							<div class="masked__elem masked--7"></div>
+							<div class="masked__elem masked--8"></div>
+							<div class="masked__elem masked--9"></div>
+							<div class="masked__elem masked--10"></div>
+							<div class="masked__elem masked--11"></div>
+							<div class="masked__elem masked--12"></div>
+							<div class="masked__elem masked--13"></div>
+							<div class="masked__elem masked--14"></div>
+							<div class="masked__elem masked--15"></div>
+							<div class="masked__elem masked--16"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- .... add class "violated" to this tabular__row if there's a violation here .... -->
+			<!-- .... add class "open" when tapped or clicked .... -->
+			<div class="tabular__row flex hidden"  style="justify-content: center;">
+				<strong>No records found</strong>
+			</div>
+
+			<div class="tabular__row flex open">
+				<div class="tabular-mob-header">
+					<div class="header-secondary replace-header">
+						<ul class="nav pri-menu">
+							<li  class="visible-xs pri-menu__hb"> <ion-icon name="ios-arrow-back"></ion-icon></li>
+							<li class="pri-menu__title"><h2>Product Details</h2></li>
+						</ul>
+					</div>
+				</div>
+				<div class="tabular__cell cell-1 hidden-xs t-check">
+					<ion-item no-padding>
+						<ion-checkbox color="dark" no-padding></ion-checkbox>
+					</ion-item>
+				</div>
+				<div class="tabular__cell cell-9 flex t-product">
+					<div class="img-wrap" margin-right style="background-image: url()">
+						<img src="https://btesimages.s3.amazonaws.com/Fur%20Jaden/h183_tan_1.jpg" width="110" alt="">
+					</div>
+					<div class="text-wrap">
+						<span class="sku"><a href="#">123456</a></span>
+						<p><a target="blank" href="#" class="prod-title">some name here</a></p>
+						<p class="prod-family">Family: <span>Tote Bag</span></p>
+						<a href="#" class="prod-action">+ Add to a Product Family</a>
+						<a href="#" class="prod-action">+ Map a Listing (add Alias)</a>
+					</div>
+				</div>
+				<div class="tabular__cell cell-6 t-alias">
+					<!-- .... show this span only if there's a violation .... -->
+					<!-- .... also add a class to the parent 'tabular__row' instructions at the div .... -->
+					<!--<span class="violation-icon">
+						<img src="../assets/img/viol.png" alt="">
+					</span>-->
+					<ul class="sku-code">
+						<li>
+							<!-- <ion-badge color="success" text-uppercase>default</ion-badge> --> FTTFUR0098
+						</li>
+						<li>
+							<!-- <ion-badge color="success" text-uppercase>default</ion-badge> --> FTTFUR0098
+						</li>
+						<li>
+							<!-- <ion-badge color="success" text-uppercase>default</ion-badge> --> FTTFUR0098
+						</li>
+					</ul>
+				</div>
+				<div class="tabular__cell cell-5 t-rule">
+					<strong class="big text-success">89</strong> <ion-icon name="information-circle"></ion-icon>
+					<p class="text-info">Seller Stocked : 45</p>
+					<p class="text-grey">MP Stocked : 44</p>
+				</div>
+				<div class="tabular__cell cell-2 pricer-count t-ship">
+					<strong class="big">7</strong>
+				</div>
+				<div class="tabular__cell cell-5 t-battle">
+
+				</div>
+			</div>
+		</div>
+
+	</div>
 
 </ion-content>

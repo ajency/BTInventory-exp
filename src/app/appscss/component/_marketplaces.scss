@@ -1,0 +1,76 @@
+.marketplaces {
+	width: 50px;
+	height: 45px;
+	padding: 0 !important;
+	// background: #eee;
+}
+.m-h {
+	display: block;
+	width: 35px;
+	height: 35px;
+	margin: 0 auto;
+	background-image: url(../assets/img/marketplaces-sprite.png);
+	background-repeat: no-repeat;
+	background-position: left 2px top 12px;
+}
+// .m-paytm {
+// 	width: 100px;
+// 	.m-h {
+// 		width: 90px;
+// 	}
+// }
+.m-amazon .m-h {
+	// background-position: left top;
+}
+.m-flipkart .m-h {
+	background-position: left -49px top 10px;
+}
+.m-snapdeal .m-h {
+	background-position: left -98px top 10px;
+}
+.m-paytm .m-h {
+	background-position: left -137px top 10px;
+}
+@media screen and (max-width: 767px) {
+	.show-white {
+		.m-h {
+			margin-top: 2px;
+		}
+		.m-amazon .m-h {
+			background-position: left 2px top -22px;
+		}
+		.m-flipkart .m-h {
+			background-position: left -49px top -22px;
+		}
+		.m-snapdeal .m-h {
+			background-position: left -98px top -22px;
+		}
+		.m-paytm .m-h {
+			background-position: left -137px top -22px;
+		}
+	}
+}
+
+
+
+.marketplace-tabs {
+	display: flex;
+	width: 100%;
+	overflow-x: auto;
+	margin-right: -15px;
+	ul {
+		display: flex;
+	}
+}
+.text-wrap .marketplaces {
+	display: inline-block;
+	vertical-align: middle;
+	border: 1px solid $border-base;
+	border-radius: 50%;
+	width: 30px;
+	height: 30px;
+	margin-left: 8px;
+	.m-h {
+		transform: scale(0.7) translateY(-9px) translateX(-4px);
+	}
+}

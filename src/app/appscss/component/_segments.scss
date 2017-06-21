@@ -1,0 +1,134 @@
+.segment {
+	justify-content: center;
+}
+.segment-md .segment-button {
+	flex-grow: 0;
+	flex-shrink: 0;
+	// flex-basis: 95px;
+	flex-basis: auto;
+	width: auto;
+	height: 4rem;
+	text-transform: none;
+	font-size: 14px;
+	color: #000;
+	opacity: 0.45;
+	border-bottom-color: transparent;
+	border-bottom-width: 3px;
+	padding-left: 10px;
+	padding-right: 10px;
+	&.segment-activated {
+		opacity: 1;
+		border-bottom-color: $bt-red;
+	}
+}
+
+.tabbed {
+	order: 6;
+	&__panels {
+		border-top: 1px solid rgba($border-base, 0);
+		.list {
+			background: $grey-lightest;
+			position: relative;
+		}
+	}
+	.segment.ng-touched + &__panels {
+		border-top: 1px solid $border-base;
+		padding-bottom: 30px;
+	}
+}
+
+
+// panel styling
+// PRODUCT INFO TAB
+.counts {
+	flex-wrap: wrap;
+	.count-single {
+		min-width: 33%;
+		margin-bottom: 15px;
+	}
+	.count-single__text {
+		font-size: 13px;
+		opacity: 0.45;
+		display: block;
+	}
+	[inline-block] {
+		display: inline-block;
+	}
+	.count-single__rule {
+		font-size: 110%;
+	}
+}
+.competitors-list {
+	max-width: 380px;
+	line-height: 1.6;
+	p {
+		padding-top: 8px;
+		opacity: 0.45;
+	}
+	&__label {
+		font-size: 12px;
+		// opacity: 0.5;
+	}
+}
+
+// SELLERS TAB
+.seller-table {
+	.tabular__header {
+		color: rgba(0,0,0,0.45);
+	}
+	// .tabular__row {
+	// 	background: #fff;
+	// }
+	.tabular__row.open & .prod-title a {
+		color: #000;
+		font-size: 90%;
+	}
+	.text-wrap .marketplaces {
+		border: 0;
+		margin: 0;
+	}
+	@media (min-width: 768px) {
+		max-height: 350px;
+		overflow: auto;
+	}
+}
+
+@media (max-width: 767px) {
+	.segment-md .segment-button {
+		width: 33.3%;
+	}
+	.open .segment {
+		padding: 0 15px;
+	}
+	.open .tabbed__panels {
+		height: 100%;
+	}
+	.open .tabbed__panels .list {
+		background: $bt-grey;
+		height: 100%;
+	}
+	.open .tabbed__panels .into-card {
+		padding: 15px !important;
+		background: #fff;
+		margin-bottom: 15px;
+		border: 0;
+		flex-basis: 100%;
+		width: 100%;
+	}
+	.open .competitors-list p {
+		padding: 0;
+		max-width: 380px;
+		width: 100%;
+	}
+	.seller-table {
+		padding: 15px;
+	}
+}
+
+// ACTIVITY TAB
+.activity-log {
+	@media (min-width: 768px) {
+		max-height: 350px;
+		overflow: auto;
+	}
+}

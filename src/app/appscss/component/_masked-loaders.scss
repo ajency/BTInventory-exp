@@ -1,0 +1,408 @@
+// the animation
+@keyframes placeHolderShimmer{
+	0%{
+		background-position: -500px 0;
+	}
+	100%{
+		background-position: 500px 0;
+	}
+}
+
+// default stuff
+.has-anim-loader {
+	padding: 0;
+}
+
+// the css
+.masked {
+	width: 100%;
+	&__bg {
+		animation-duration: 1s;
+		animation-fill-mode: forwards;
+		animation-iteration-count: infinite;
+		animation-name: placeHolderShimmer;
+		animation-timing-function: linear;
+		background: #f6f7f8;
+		background: #eeeeee;
+		background: -webkit-gradient(linear, left top, right top, color-stop(8%, #eeeeee), color-stop(18%, #dddddd), color-stop(33%, #eeeeee));
+		background: -webkit-linear-gradient(left, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+		background: linear-gradient(to right,  #eeeeee 8%,#dddddd 18%,#eeeeee 33%);
+		// background-size: 800px 104px;
+		position: relative;
+	}
+	&__elements {
+		position: absolute;
+		left: 0;
+		top: 0;
+		right: 0;
+		bottom: 0;
+	}
+	&__elem {
+		background: #fff;
+		position: absolute;
+	}
+
+	// for the import xlsx page
+	$heightval: 14px;
+	&--xlsx &__bg {
+		height: 68px;
+	}
+	&--xlsx &__elem {
+		height: $heightval;
+	}
+	&--xlsx &--1,
+	&--xlsx &--14 {
+		top: 0;
+		left: 0;
+		right: 0;
+	}
+	&--xlsx &--14 {
+		top: auto;
+		bottom: 0;
+	}
+	&--xlsx &--2 {
+		left: 0;
+		top: $heightval;
+		width: 1%;
+	}
+	&--xlsx &--3 {
+		left: 3%;
+		top: $heightval;
+		width: 7.5%;
+	}
+	&--xlsx &--4 {
+		left: 27%;
+		top: $heightval;
+		width: 6.5%;
+	}
+	&--xlsx &--5 {
+		left: 41%;
+		top: $heightval;
+		width: 2.5%;
+	}
+	&--xlsx &--6 {
+		left: 55%;
+		width: 4.5%;
+		top: $heightval;
+	}
+	&--xlsx &--7 {
+		left: 63%;
+		width: 6.5%;
+		top: $heightval;
+	}
+	&--xlsx &--8 {
+		left: 79%;
+		width: 5.5%;
+		top: $heightval;
+	}
+	&--xlsx &--9 {
+		left: 91%;
+		width: 2%;
+		top: $heightval;
+	}
+	&--xlsx &--10 {
+		left: 96.5%;
+		width: 3.6%;
+		top: $heightval;
+	}
+	&--xlsx &--11 {
+		left: 0;
+		width: 10.5%;
+		top: $heightval * 2;
+		height: $heightval * 2;
+	}
+	&--xlsx &--12 {
+		left: 10.5%;
+		width: 89.6%;
+		top: $heightval * 2;
+		height: $heightval;
+	}
+	&--xlsx &--13 {
+		left: 19.5%;
+		width: 80.6%;
+		height: $heightval;
+		top: $heightval * 3;
+	}
+	@media (max-width: 767px) {
+		$heightval: 13px;
+		&--xlsx {
+			padding: 15px 10px;
+		}
+		&--xlsx &__bg {
+			height: 182px;
+		}
+		&--xlsx &__elem {
+			width: auto;
+		}
+		&--xlsx &--13,
+		&--xlsx &--14 {
+			display: none;
+		}
+		&--xlsx &--1 {
+			left: 6%;
+			right: 28%;
+			top: 0;
+			height: $heightval;
+		}
+		&--xlsx &--2 {
+			left: 0;
+			right: 0;
+			top: $heightval;
+			height: $heightval;
+		}
+		&--xlsx &--3 {
+			left: 37%;
+			right: 0;
+			top: $heightval * 2;
+			height: $heightval;
+		}
+		&--xlsx &--4 {
+			left: 0;
+			right: 0;
+			top: $heightval * 3;
+			height: $heightval;
+		}
+		&--xlsx &--5 {
+			left: 20%;
+			right: 0;
+			top: $heightval * 4;
+			height: $heightval;
+		}
+		&--xlsx &--6 {
+			left: 0;
+			right: 0;
+			top: $heightval * 5;
+			height: $heightval * 3;
+		}
+		&--xlsx &--7 {
+			left: 27%;
+			right: 42%;
+			top: $heightval * 8;
+			height: $heightval;
+		}
+		&--xlsx &--8 {
+			left: 0;
+			right: 0;
+			top: $heightval * 9;
+			height: $heightval;
+		}
+		&--xlsx &--9 {
+			left: 49%;
+			right: 0;
+			top: $heightval * 10;
+			height: $heightval;
+		}
+		&--xlsx &--10 {
+			left: 0;
+			right: 0;
+			top: $heightval * 11;
+			height: $heightval * 2;
+		}
+		&--xlsx &--11 {
+			left: 0;
+			right: 36%;
+			top: $heightval * 13;
+			height: $heightval;
+		}
+		&--xlsx &--12 {
+			left: auto;
+			right: 14%;
+			width: 6%;
+			top: $heightval * 13;
+			height: $heightval;
+		}
+	}
+
+
+	// for the prices page
+	$heightval: 16px;
+	&--prices &__bg {
+		height: 96px;
+	}
+	&--prices &__elem {
+		height: $heightval;
+	}
+	&--prices &--1,
+	&--prices &--16 {
+		top: 0;
+		left: 0;
+		right: 0;
+		height: $heightval;
+	}
+	&--prices &--16 {
+		top: auto;
+		bottom: 0;
+	}
+	&--prices &--2 {
+		left: 0;
+		top: $heightval;
+		width: 1%;
+		height: $heightval;
+	}
+	&--prices &--3 {
+		left: 2.5%;
+		top: $heightval;
+		width: 1.5%;
+		height: $heightval;
+	}
+	&--prices &--4 {
+		left: 0;
+		top: $heightval * 2;
+		width: 4%;
+		height: $heightval * 3;
+	}
+	&--prices &--5 {
+		left: 10%;
+		top: $heightval;
+		width: 2%;
+		height: $heightval * 4;
+	}
+	&--prices &--6 {
+		left: 22%;
+		top: $heightval;
+		width: 1.5%;
+		height: $heightval;
+	}
+	&--prices &--7 {
+		left: 26%;
+		top: $heightval;
+		width: 8.5%;
+		height: $heightval;
+	}
+	&--prices &--8 {
+		left: 10%;
+		top: $heightval * 2;
+		width: 72.5%;
+		height: $heightval;
+	}
+	&--prices &--9 {
+		left: 31%;
+		top: $heightval * 3;
+		width: 51.5%;
+		height: $heightval;
+	}
+	&--prices &--10 {
+		left: 10%;
+		top: $heightval * 4;
+		width: 72.5%;
+		height: $heightval;
+	}
+	&--prices &--11 {
+		left: 42%;
+		top: $heightval;
+		width: 11%;
+		height: $heightval;
+	}
+	&--prices &--12 {
+		left: 65%;
+		top: $heightval;
+		width: 4.5%;
+		height: $heightval;
+	}
+	&--prices &--13 {
+		left: 74%;
+		top: $heightval;
+		width: 2%;
+		height: $heightval;
+	}
+	&--prices &--14 {
+		left: 79%;
+		top: $heightval;
+		width: 3.5%;
+		height: $heightval;
+	}
+	&--prices &--15 {
+		// left: 10%;
+		right: 0;
+		top: $heightval;
+		width: 4%;
+		height: $heightval * 4;
+	}
+	@media (max-width: 767px) {
+		$heightval: 17px;
+		&--prices {
+			// padding: 15px 10px;
+		}
+		&--prices &__bg {
+			height: 133px;
+		}
+		&--prices &__elem {
+			width: auto;
+		}
+		&--prices &--1,
+		&--prices &--16 {
+			height: $heightval;
+		}
+		&--prices &--12,
+		&--prices &--13,
+		&--prices &--14 {
+			display: none;
+		}
+		&--prices &--2,
+		&--prices &--15 {
+			width: 3%;
+			height: auto;
+			top: $heightval;
+			bottom: $heightval;
+			left: 0;
+		}
+		&--prices &--15 {
+			left: auto;
+			right: 0;
+		}
+		&--prices &--3 {
+			left: 14%;
+			top: $heightval;
+			width: 3%;
+			height: $heightval * 4;
+		}
+		&--prices &--4 {
+			left: 34%;
+			top: $heightval;
+			width: 3%;
+			height: $heightval;
+		}
+		&--prices &--5 {
+			left: 44%;
+			top: $heightval;
+			width: 53%;
+			height: $heightval;
+		}
+		&--prices &--6 {
+			left: 15%;
+			top: $heightval * 2;
+			width: 82%;
+			height: $heightval;
+		}
+		&--prices &--7 {
+			left: 70%;
+			top: $heightval * 3;
+			width: 27%;
+			height: $heightval;
+		}
+		&--prices &--8 {
+			left: 15%;
+			top: $heightval * 4;
+			width: 82%;
+			height: $heightval;
+		}
+		&--prices &--9 {
+			left: 0;
+			top: $heightval * 5;
+			width: 98%;
+			height: $heightval;
+		}
+		&--prices &--10 {
+			left: 13%;
+			top: $heightval * 6;
+			width: 5%;
+			height: $heightval;
+		}
+		&--prices &--11 {
+			left: 27%;
+			top: $heightval * 6;
+			width: 56%;
+			height: $heightval;
+		}
+	}
+}

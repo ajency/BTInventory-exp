@@ -46,6 +46,7 @@
 				<div class="tabular__cell cell-5 t-sell">Sellable</div>
 				<div class="tabular__cell cell-2 t-ship">To Ship</div>
 				<div class="tabular__cell cell-5 t-channel">Channels</div>
+				<div class="tabular__cell cell-2 t-hsn">HSN Code</div>
 			</div>
 
 			<!-- .... the loader .... -->
@@ -160,7 +161,16 @@
 						</li>
 					</ul>
 				</div>
+				<div class="tabular__cell cell-2 t-hsn">
+					<div class="visible-xs">
+						<strong class="mobile-title">To Ship</strong>
+					</div>
+					<strong class="big">7</strong>
+				</div>
 			</div>
+
+			<!--add pagination here-->
+			<pagination-controls (pageChange)="pagChanged($event)" autoHide="true"></pagination-controls>
 		</div>
 
 	</div>

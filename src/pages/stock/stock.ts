@@ -21,4 +21,14 @@ export class StockPage {
     console.log('ionViewDidLoad StockPage');
   }
 
+  private paginationConfig: any = {
+    itemsPerPage: 5,
+    currentPage: 1,
+    totalItems: 0
+  };
+
+  private pagChanged(page): void{
+    this.paginationConfig.currentPage = page;
+  }
+
 }

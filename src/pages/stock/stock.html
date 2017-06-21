@@ -80,12 +80,12 @@
 				<strong>No records found</strong>
 			</div>
 
-			<div class="tabular__row flex open">
+			<div class="tabular__row flex ">
 				<div class="tabular-mob-header">
 					<div class="header-secondary replace-header">
-						<ul class="nav pri-menu">
-							<li  class="visible-xs pri-menu__hb"> <ion-icon name="ios-arrow-back"></ion-icon></li>
-							<li class="pri-menu__title"><h2>Product Details</h2></li>
+						<ul class="nav sku-menu">
+							<li  class="visible-xs sku-menu__hb"> <ion-icon name="ios-arrow-back"></ion-icon></li>
+							<li class="sku-menu__title"><h2>Product Details</h2></li>
 						</ul>
 					</div>
 				</div>
@@ -112,6 +112,9 @@
 					<!--<span class="violation-icon">
 						<img src="../assets/img/viol.png" alt="">
 					</span>-->
+					<div class="visible-xs">
+						<strong class="mobile-title">Alias(es)</strong>
+					</div>
 					<ul class="sku-code">
 						<li>
 							<!-- <ion-badge color="success" text-uppercase>default</ion-badge> --> FTTFUR0098
@@ -124,16 +127,38 @@
 						</li>
 					</ul>
 				</div>
-				<div class="tabular__cell cell-5 t-rule">
-					<strong class="big text-success">89</strong> <ion-icon name="information-circle"></ion-icon>
+				<div class="tabular__cell cell-5 t-sellable">
+					<div class="visible-xs">
+						<strong class="mobile-title">Sellable</strong>
+					</div>
+					<p>
+						<strong class="big text-success">89</strong> <ion-icon name="information-circle" class="text-warning"></ion-icon>
+					</p>
 					<p class="text-info">Seller Stocked : 45</p>
 					<p class="text-grey">MP Stocked : 44</p>
 				</div>
-				<div class="tabular__cell cell-2 pricer-count t-ship">
+				<div class="tabular__cell cell-2 t-ship">
+					<div class="visible-xs">
+						<strong class="mobile-title">To Ship</strong>
+					</div>
 					<strong class="big">7</strong>
 				</div>
-				<div class="tabular__cell cell-5 t-battle">
-
+				<div class="tabular__cell cell-5 t-channel">
+					<div class="visible-xs">
+						<strong class="mobile-title">Channels</strong>
+					</div>
+					<ul>
+						<li>
+							<a href="#">
+								<img src="/assets/img/icons/icon_favamazon.png" class="channelFaviconImageGreen"> <!-- class="channelFaviconImageRed disabled" if disabled -->
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="/assets/img/icons/icon_flipkart.png" class="channelFaviconImageRed disabled"> <!-- class="channelFaviconImageRed disabled" if disabled -->
+							</a>
+						</li>
+					</ul>
 				</div>
 			</div>
 		</div>

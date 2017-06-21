@@ -32,6 +32,9 @@ page-stock {
 	// 		text-align: center;
 	// 	}
 	// }
+	.tabular{
+		font-size: 12px;
+	}
 	@media screen and (min-width: 768px) {
 		.t-price {
 			// padding-left: 20px;
@@ -58,20 +61,21 @@ page-stock {
 				width: 100%;
 				order: 1;
 			}
-			.t-price {
-				order: 5;
-				width: 65%;
-				text-align: right;
-				height: 52px;
+			.t-ship {
+				order: 4;
+				width: 50%;
+				text-align: left;
+				// height: 52px;
 				padding-top: 18px;
 			}
-			.t-rule,
-			.t-battle {
-				display: none;
+			.t-sellable{
+				order: 3;
+				width: 50%;
+				padding-top: 18px;
 			}
-			.t-listing {
+			.t-alias {
 				order: 2;
-				width: 18%;
+				width: 50%;
 				padding-top: 18px;
 			}
 			.t-seller {
@@ -79,8 +83,10 @@ page-stock {
 				width: 17%;
 				padding-top: 18px;
 			}
-			.t-battler {
-				order: 6;
+			.t-channel {
+				order: 5;
+				width: 50%;
+				padding-top: 18px;
 			}
 
 
@@ -133,6 +139,10 @@ page-stock {
 				display: block;
 				padding: 15px;
 			}
+		}
+		.mobile-title{
+			display: block;
+			margin-bottom: 5px;
 		}
 	}
 
@@ -199,6 +209,30 @@ page-stock {
 			color: darken($bt-grey, 50%);
 			font-size: 11px;
 			margin-bottom: 5px;
+		}
+	}
+
+	.t-channel{
+		ul{
+			list-style-type: none;
+			display: flex;
+			flex-wrap: wrap;
+		}
+		li{
+			padding: 1% 4%;
+		}
+		.channelFaviconImageGreen, .channelFaviconImageRed{
+			border-bottom: 2px solid $bt-green;
+			width: 16px;
+			padding-bottom: 3px;
+			max-width: 100%;
+			height: auto;
+		}
+		.channelFaviconImageRed{
+			border-bottom: 2px solid $bt-red;
+		}
+		.disabled{
+			opacity: 0.5;
 		}
 	}
 }

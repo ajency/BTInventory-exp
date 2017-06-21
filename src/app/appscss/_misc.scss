@@ -128,7 +128,9 @@
 		display: none !important;
 	}
 	ion-app .content[padding-horizontal],
-	ion-app .content[padding-horizontal] .scroll-content {
+	ion-app .content[padding-horizontal] .scroll-content,
+	ion-app.md [padding], ion-app.md [padding] .scroll-content,
+	ion-app.ios [padding], ion-app.ios [padding] .scroll-content {
 		padding: 0;
 	}
 	.bold-xs {
@@ -213,6 +215,9 @@ ion-loading ion-backdrop {
 }
 .text-success{
 	color: $bt-green;
+}
+.text-warning{
+	color: $star-yellow;
 }
 .text-grey{
 	color: darken($bt-grey, 50%);

@@ -9,7 +9,7 @@
 
 <ion-content padding>
 
-	<div class="container" padding-horizontal>
+	<div class="container-fluid" padding-horizontal>
 		<div class="header-secondary replace-header">
 			<ul class="nav sku-menu">
 				<li (click)="goBack()" class="visible-xs sku-menu__hb"> <ion-icon name="ios-arrow-back"></ion-icon></li>
@@ -45,12 +45,12 @@
 				<div class="tabular__cell cell-6 t-alias">Alias(es)</div>
 				<div class="tabular__cell cell-5 t-sell">Sellable</div>
 				<div class="tabular__cell cell-2 t-ship">To Ship</div>
-				<div class="tabular__cell cell-5 t-channel">Channels</div>
-				<div class="tabular__cell cell-2 t-hsn">HSN Code</div>
+				<div class="tabular__cell cell-4 t-channel">Channels</div>
+				<div class="tabular__cell cell-3 t-hsn">HSN Code</div>
 			</div>
 
 			<!-- .... the loader .... -->
-			<div class="tabular__row flex has-anim-loader hidden">
+			<div class="tabular__row flex has-anim-loader" [hidden]="productList.length || priceListLoading == false" *ngFor="let dummy of dummyProducts">
 				<div class="masked masked--prices">
 					<div class="masked__bg">
 						<div class="masked__elements">
@@ -77,11 +77,12 @@
 
 			<!-- .... add class "violated" to this tabular__row if there's a violation here .... -->
 			<!-- .... add class "open" when tapped or clicked .... -->
-			<div class="tabular__row flex hidden"  style="justify-content: center;">
+			<div class="tabular__row flex" *ngIf="!priceListLoading && !productList.length"  style="justify-content: center;">
 				<strong>No records found</strong>
 			</div>
 
-			<div class="tabular__row flex ">
+			<!-- <div class="tabular__row flex" (mouseleave)="itemMouseOut(item)" (mouseover)="itemtMouseOver(item)" [class.open]="item.open" *ngFor="let item of productList | paginate: paginationConfig"> -->
+			<div class="tabular__row flex open" >
 				<div class="tabular-mob-header">
 					<div class="header-secondary replace-header">
 						<ul class="nav sku-menu">
@@ -144,7 +145,7 @@
 					</div>
 					<strong class="big">7</strong>
 				</div>
-				<div class="tabular__cell cell-5 t-channel">
+				<div class="tabular__cell cell-4 t-channel">
 					<div class="visible-xs">
 						<strong class="mobile-title">Channels</strong>
 					</div>
@@ -161,11 +162,44 @@
 						</li>
 					</ul>
 				</div>
-				<div class="tabular__cell cell-2 t-hsn">
+				<div class="tabular__cell cell-3 t-hsn">
 					<div class="visible-xs">
-						<strong class="mobile-title">To Ship</strong>
+						<strong class="mobile-title">HSN code</strong>
 					</div>
-					<strong class="big">7</strong>
+					<div class="flex">
+						<ion-item>
+							<ion-input type="text" value="" placeholder="Edit HSN"></ion-input>
+						</ion-item>
+						<button ion-button color="danger" icon-only small clear>
+							<ion-icon name="checkmark"></ion-icon>
+						</button>
+					</div>
+				</div>
+
+				<div class="tabbed tabular__moreinfo" padding-horizontal>
+					<ion-segment [(ngModel)]="selectedDetail">
+						<ion-segment-button value="wstock">
+							Warehouse Stock
+						</ion-segment-button>
+						<ion-segment-button value="cstock">
+							Channel Stock
+						</ion-segment-button>
+						<ion-segment-button value="price">
+							Channel Price
+						</ion-segment-button>
+					</ion-segment>
+
+					<div [ngSwitch]="selectedDetail" class="tabbed__panels">
+						<ion-list *ngSwitchCase="'wstock'" padding no-margin>
+							Warehouse Stock Details
+						</ion-list>
+						<ion-list *ngSwitchCase="'cstock'" padding no-margin>
+							Channel Stock Details
+						</ion-list>
+						<ion-list *ngSwitchCase="'price'" padding no-margin>
+							Channel Price Details
+						</ion-list>
+					</div>
 				</div>
 			</div>
 

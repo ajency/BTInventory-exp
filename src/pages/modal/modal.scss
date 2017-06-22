@@ -1,0 +1,14 @@
+page-modal {
+	.header{
+		background-color: $bt-grey;
+	}
+	.toolbar-md{
+		padding: 15px;
+	}
+}
+
+@media only screen and (min-height: 768px) and (min-width: 768px){
+	.modal-wrapper {
+		height: 250px;
+	}
+}

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { Location } from '@angular/common';
 
 /**
@@ -15,7 +15,7 @@ import { Location } from '@angular/common';
 })
 export class StockPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private location: Location) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private location: Location, public modalCtrl: ModalController) {
   }
 
   private productList: any = [];
@@ -50,6 +50,11 @@ export class StockPage {
 
   private pagChanged(page): void{
     this.paginationConfig.currentPage = page;
+  }
+
+  showModal() {
+      const modal = this.modalCtrl.create('ModalPage');
+      modal.present();
   }
 
 }

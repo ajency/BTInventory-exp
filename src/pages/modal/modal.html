@@ -7,7 +7,8 @@
 <ion-header>
   <ion-toolbar>
 	<ion-title>
-	  Assign Product Family
+	  <!-- Assign Product Family -->
+	  Add/Edit Aliases
 	</ion-title>
 	<ion-buttons start>
 	  <button ion-button (click)="dismiss()">
@@ -20,20 +21,60 @@
 
 
 <ion-content padding>
-	<ion-item>
+	<!-- Product Family content -->
+	<!-- <ion-item>
 		<ion-input type="text" placeholder="Start typing family name..."></ion-input>
-	</ion-item>
+	</ion-item> -->
+
+
+	<!-- Map a listing content -->
+	<ion-grid>
+		<ion-row>
+			<ion-col col-6>
+				<strong>Existing Aliases</strong>
+				<ion-tags-input [(ngModel)]="tags" [mode]="'dark'"></ion-tags-input>
+			</ion-col>
+			<ion-col col-6>
+				<strong>Add a new Alias</strong>
+				<ion-list>
+				<ion-item>
+				    <ion-label>Add Alias</ion-label>
+				    <ion-select [(ngModel)]="alias">
+				      <ion-option value="default">default</ion-option>
+				      <ion-option value="1">1</ion-option>
+				      <ion-option value="2">2</ion-option>
+				    </ion-select>
+				</ion-item>
+
+				<ion-item>
+					<ion-input small type="text" placeholder="Start typing family name..."></ion-input>
+				</ion-item>
+
+				<ion-item>
+					<button ion-button small color="secondary">
+						Add
+					</button>
+				</ion-item>
+				</ion-list>
+
+				<div>
+					<a href="#">Bulk Upload Aliases by CSV File</a>
+				</div>
+			</ion-col>
+		</ion-row>
+	</ion-grid>
 </ion-content>
 
-<ion-footer>
+<!-- Product Family content -->
+<!-- <ion-footer>
   <ion-toolbar>
 		<ion-buttons end>
-	      <button ion-button color="secondary">
-	        Save
-	      </button>
-	      <button ion-button color="danger" clear (click)="dismiss()">
-	        Cancel
-	      </button>
-	    </ion-buttons>
+		  <button ion-button color="secondary">
+			Save
+		  </button>
+		  <button ion-button color="danger" clear (click)="dismiss()">
+			Cancel
+		  </button>
+		</ion-buttons>
   </ion-toolbar>
-</ion-footer>
+</ion-footer>-->

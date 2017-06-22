@@ -5,10 +5,26 @@ page-modal {
 	.toolbar-md{
 		padding: 15px;
 	}
+
+	ion-tags-input .ion-tags-input .iti-tag{
+		border-radius: 15px;
+		background-color: darken($grey-lightest, 60%);
+		padding: 5px 15px;
+		a{
+			text-decoration: none;
+		}
+	}
+	ion-tags-input .ion-tags-input{
+		border: none;
+		padding: 10px 0 0;
+	}
+	ion-tags-input .ion-tags-input .iti-input{
+		display: none;
+	}
 }
 
 @media only screen and (min-height: 768px) and (min-width: 768px){
 	.modal-wrapper {
-		height: 250px;
+		height: 320px;
 	}
 }

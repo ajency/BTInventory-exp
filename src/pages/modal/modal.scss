@@ -6,25 +6,42 @@ page-modal {
 		padding: 15px;
 	}
 
-	ion-tags-input .ion-tags-input .iti-tag{
-		border-radius: 15px;
-		background-color: darken($grey-lightest, 60%);
-		padding: 5px 15px;
-		a{
-			text-decoration: none;
+	ion-tags-input{
+		.ion-tags-input{
+			border: none;
+			padding: 10px 0 0;
+			.iti-tag{
+				border-radius: 15px;
+				background-color: darken($grey-lightest, 60%);
+				padding: 5px 15px;
+				a{
+					text-decoration: none;
+				}
+			}
+			.iti-input{
+				display: none;
+			}
 		}
 	}
-	ion-tags-input .ion-tags-input{
+
+	.list-ios > .item-block:first-child{
 		border: none;
-		padding: 10px 0 0;
-	}
-	ion-tags-input .ion-tags-input .iti-input{
-		display: none;
 	}
 }
 
 @media only screen and (min-height: 768px) and (min-width: 768px){
 	.modal-wrapper {
 		height: 320px;
+	}
+}
+
+@media only screen and (max-width: 768px){
+	.alias-grid{
+		[col-6]{
+			flex: 0 0 100%;
+			width: 100%;
+			max-width: 100%;
+			margin-bottom: 50px;
+		}
 	}
 }

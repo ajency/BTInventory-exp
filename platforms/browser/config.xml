@@ -20,7 +20,7 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="16" />
     <preference name="BackupWebStorage" value="none" />
-    <preference name="SplashScreen" value="/assets/img/pwa-loading.gif" />
+    <preference name="SplashScreen" value="/IonicApps/Inventory/www/assets/img/pwa-loading.gif" />
     <preference name="SplashShowOnlyFirstTime" value="false" />
     <preference name="AutoHideSplashScreen" value="false" />
     <preference name="SplashScreenDelay" value="10000" />

@@ -6,7 +6,7 @@ module.exports = {
   entry: process.env.IONIC_APP_ENTRY_POINT,
   output: {
     path: '{{BUILD}}',
-    publicPath: process.env.IONIC_ENV === 'prod' ? '/IonicApps/Inventory/www/build/' : '/build/',
+    publicPath: process.env.IONIC_ENV === 'prod' ? '/IonicApps/Inventory/www/build/' : '/IonicApps/Inventory/www/build/',
     filename: process.env.IONIC_OUTPUT_JS_FILE_NAME,
     devtoolModuleFilenameTemplate: ionicWebpackFactory.getSourceMapperFunction(),
   },

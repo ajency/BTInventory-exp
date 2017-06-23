@@ -64,7 +64,7 @@ ModalPageModule = __decorate([
  */
 var CITY_PICKER_VALUE_ACCESSOR = {
     provide: __WEBPACK_IMPORTED_MODULE_1__angular_forms__["c" /* NG_VALUE_ACCESSOR */],
-    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_1" /* forwardRef */])(function () { return IonTagsInput; }),
+    useExisting: __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* forwardRef */])(function () { return IonTagsInput; }),
     multi: true
 };
 var IonTagsInput = (function () {
@@ -86,7 +86,7 @@ var IonTagsInput = (function () {
         this.once = true;
         this.canEnterAdd = true;
         this.canBackspaceRemove = true;
-        this.onChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* EventEmitter */]();
+        this.onChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* EventEmitter */]();
     }
     IonTagsInput.prototype.ngOnInit = function () {
         var _this = this;
@@ -251,24 +251,24 @@ var IonTagsInput = (function () {
     /** @nocollapse */
     IonTagsInput.ctorParameters = [
         { type: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* Platform */], },
-        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Y" /* ChangeDetectorRef */], },
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* ChangeDetectorRef */], },
     ];
     IonTagsInput.propDecorators = {
         'input': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* ViewChild */], args: ['tagsInput',] },],
         'tags': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_10" /* ViewChild */], args: ['tags',] },],
-        'mode': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-        'readonly': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-        'color': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-        'hideRemove': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-        'maxTags': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-        'placeholder': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-        'type': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-        'separatorStr': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-        'once': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-        'canEnterAdd': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-        'canBackspaceRemove': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-        'verifyMethod': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-        'onChange': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Output */] },],
+        'mode': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+        'readonly': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+        'color': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+        'hideRemove': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+        'maxTags': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+        'placeholder': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+        'type': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+        'separatorStr': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+        'once': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+        'canEnterAdd': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+        'canBackspaceRemove': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+        'verifyMethod': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+        'onChange': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Output */] },],
         '_click': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_9" /* HostListener */], args: ['click', ['$event'],] },],
     };
     return IonTagsInput;
@@ -367,7 +367,7 @@ var IonTagsInputModule = (function () {
     IonTagsInputModule.decorators = [
         { type: __WEBPACK_IMPORTED_MODULE_2__angular_core__["a" /* NgModule */], args: [{
                     imports: [
-                        __WEBPACK_IMPORTED_MODULE_0__angular_common__["c" /* CommonModule */],
+                        __WEBPACK_IMPORTED_MODULE_0__angular_common__["e" /* CommonModule */],
                         __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormsModule */],
                         __WEBPACK_IMPORTED_MODULE_1__angular_forms__["b" /* ReactiveFormsModule */]
                     ],

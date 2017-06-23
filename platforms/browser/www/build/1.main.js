@@ -51,8 +51,8 @@ StockPageModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(96);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_ev_ev_token__ = __webpack_require__(196);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_sku_details_service_sku_details_service__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_ev_ev_token__ = __webpack_require__(197);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__providers_sku_details_service_sku_details_service__ = __webpack_require__(198);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StockPage; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -169,10 +169,10 @@ StockPage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_6" /* Component */])({
         selector: 'page-stock',template:/*ion-inline-start:"/home/ajantoniof/.bin/bt/Inventory/src/pages/stock/stock.html"*/'<!-- <ion-header>\n\n  <ion-navbar>\n    <ion-title>Stock</ion-title>\n  </ion-navbar>\n\n</ion-header> -->\n\n<ion-content padding>\n\n	<div class="container-fluid" padding-horizontal>\n\n		<div class="header-main" padding-horizontal>\n			<!-- Main Nav tabs -->\n			<ul class="nav sku-menu sku-to-nav">\n				<li class="visible-xs sku-menu__hb"> <ion-icon name="menu"></ion-icon></li>\n				<li class="sku-menu__title hasub"><h1>Inventory</h1></li>\n				<li class="sku-menu__wrap hidden-xs-inline-block">\n					<ul class="sku-menu__full">\n						<li><a>Stock</a></li>\n						<li><a>Manage Stock</a></li>\n						<li><a>Listing Watch</a></li>\n					</ul>\n				</li>\n				<li class="sku-menu__logout">\n				<button color="dark" ion-button icon-right small clear>\n					  <ion-icon name="print"></ion-icon> Print SKU Barcodes\n					</button>\n				</li>\n			</ul>\n		</div>\n\n		<div class="header-secondary replace-header">\n			<ul class="nav sku-menu">\n				<li (click)="goBack()" class="visible-xs sku-menu__hb"> <ion-icon name="ios-arrow-back"></ion-icon></li>\n				<!-- <li class="pri-menu__title"><h2>Import product details from a CSV</h2></li> -->\n				<li class="sku-menu__wrap inventory-tabs show-white">\n					<ul class="sku-menu__full">\n						<li class="active" [class.active]=""><a >Active (1,066)</a></li>\n						<li [class.active]=""><a  class="">To Ship (250)</a></li>\n						<li [class.active]=""><a  class="">Low Stock (15)</a></li>\n						<li [class.active]=""><a  class="">Stock-outs (783)</a></li>\n						<li [class.active]=""><a  class="">Bundles (0)</a></li>\n						<li [class.active]=""><a  class="">All (1,066)</a></li>\n						<li [class.active]=""><a  class="">Unlisted (5)</a></li>\n						<li [class.active]=""><a  class="">Archived (0)</a></li>\n					</ul>\n				</li>\n				<li class="buttons-right hidden-xs">\n					<ul class="sku-menu__full">\n						<li><a>Update Channel - Sku Mapping</a></li>\n					</ul>\n				</li>\n			</ul>\n		</div>\n\n		<div class="filters flex">\n			<div class="filters__multi">\n				<ion-checkbox color="dark" no-padding></ion-checkbox>\n			</div>\n			<!-- .... On click of this button  ... -->\n			<a (click)="toggleFilterDisplay()" class="filters__toggle"><ion-icon name="funnel" color="primary"></ion-icon></a>\n		</div>\n\n		<div class="filters flex bottom">\n			<!-- .... toggle class "open" here ... -->\n			<!-- .... toggle this one -->\n			<div [ngClass]="{\'collapsed\': hideFilter}" class="filters__wrap flex">\n				<div class="filters__search flex">\n					<div class="bt-dropdown" [class.open]="filterOptions.search.open" [class.filtered]="filterOptions.search.filtered">\n						<!-- .... On click of this button, add class "open" to the parent div "bt-dropdown" .... -->\n						<!-- .... just adding the class will show the dropdown .... -->\n						<!-- .... if any of the elements are selected then add class "filtered" to parent div "bt-dropdown" .... -->\n						<button ion-button color="dark" outline no-margin class="bt-dropdown__btn button-drop btn-search" (click)="toggleDrop(\'search\')">\n							<ion-icon name="ios-search"></ion-icon> SKU/Alias <ion-icon name="ios-arrow-down"></ion-icon>\n						</button>\n						<div class="bt-dropdown__dd">\n							<button ion-button color="dark" (click)="changeSearchField(field.slug)"  clear no-margin block class="bt-dropdown__btn button-drop">SKU</button>\n							<button ion-button color="dark" (click)="changeSearchField(field.slug)"  clear no-margin block class="bt-dropdown__btn button-drop">Product Name</button>\n						</div>\n					</div>\n					<input [(ngModel)]="filterOptions.search.value" (keyup)="searchItem($event)" type="text" class="form-control" placeholder="Search (Min 3 chars)" padding-left>\n				</div>\n\n				<div class="bt-dropdown" [class.open]="filterOptions.warehouse.open">\n					<!-- .... On click of this button, add class "open" to the parent div "bt-dropdown" .... -->\n					<!-- .... just adding the class will show the dropdown .... -->\n					<button (click)="toggleDrop(\'warehouse\')" ion-button color="dark" outline no-margin class="bt-dropdown__btn button-drop">\n						<span class="plusicon visible-xs-inline-block"></span> Warehouses <ion-icon name="ios-arrow-down" class="hidden-xs icon-small"></ion-icon>\n					</button>\n					<div class="bt-dropdown__dd">\n						<button ion-button color="dark"  clear no-margin block class="bt-dropdown__btn button-drop">All Warehouses</button>\n					</div>\n				</div>\n\n				<div class="bt-dropdown" [class.open]="filterOptions.sort.open" [class.filtered]="filterOptions.sort.filtered">\n					<!-- .... On click of this button, add class "open" to the parent div "bt-dropdown" .... -->\n					<!-- .... just adding the class will show the dropdown .... -->\n					<button (click)="toggleDrop(\'sort\')" ion-button color="dark" outline no-margin class="bt-dropdown__btn button-drop">\n						<span class="plusicon visible-xs-inline-block"></span> Sort by <span [hidden]="!filterOptions.sort.selectedname">({{filterOptions.sort.selectedname}})</span><ion-icon name="ios-arrow-down" class="hidden-xs icon-small"></ion-icon>\n					</button>\n					<div class="bt-dropdown__dd">\n						<ion-list radio-group [(ngModel)]="filterOptions.sort.selected" >\n							<ion-item *ngFor="let item of filterOptions.sort.options">\n								<ion-label no-padding>{{item.name}}</ion-label>\n								<ion-radio color="green" no-padding value="{{item.slug}}"></ion-radio>\n							</ion-item>\n						</ion-list>\n					</div>\n				</div>\n\n				<div class="bt-dropdown" [class.open]="filterOptions.quantity.open" [class.filtered]="filterOptions.quantity.filtered">\n					<!-- .... On click of this button, add class "open" to the parent div "bt-dropdown" .... -->\n					<!-- .... just adding the class will show the dropdown .... -->\n					<button (click)="toggleDrop(\'quantity\')" ion-button color="dark" outline no-margin class="bt-dropdown__btn button-drop">\n						<span class="plusicon visible-xs-inline-block"></span> Sellable Qty <ion-icon name="ios-arrow-down" class="hidden-xs icon-small"></ion-icon>\n					</button>\n					<div class="bt-dropdown__dd">\n						<ion-list radio-group [(ngModel)]="filterOptions.quantity.selected" >\n							<ion-item *ngFor="let item of filterOptions.quantity.options">\n								<ion-label no-padding>{{item.name}}</ion-label>\n								<ion-radio color="green" no-padding value="{{item.slug}}"></ion-radio>\n							</ion-item>\n						</ion-list>\n					</div>\n				</div>\n\n				<div class="bt-dropdown" [class.open]="filterOptions.price.open">\n					<button (click)="toggleDrop(\'price\')" ion-button color="dark" outline no-margin class="bt-dropdown__btn button-drop">\n						<span class="plusicon visible-xs-inline-block"></span> Price <ion-icon name="ios-arrow-down" class="hidden-xs icon-small"></ion-icon>\n					</button>\n					<div class="bt-dropdown__dd range-dd">\n						<ion-item>\n							<!-- .... this range slider stops working when this is added -> dualKnobs="true" .... -->\n							<!-- .... please check as it needs to have dual knobs - for max and min .... -->\n							<ion-range dualKnobs="true" [(ngModel)]="priceSlider" min="1000" max="2000" pin="true">\n								<!-- <ion-label range-left>1000</ion-label>\n								<ion-label range-right>2000</ion-label> -->\n							</ion-range>\n						</ion-item>\n\n						<!-- <div> -->\n							<ion-list class="flex filter-boxes inline" padding-horizontal>\n								<ion-item class="has-rupee-symbol">\n									<ion-label stacked>Min</ion-label>\n									<ion-input type="number" min="0"></ion-input>\n								</ion-item>\n								<ion-item class="has-rupee-symbol">\n									<ion-label stacked>Max</ion-label>\n									<ion-input type="number"></ion-input>\n								</ion-item>\n							</ion-list>\n						<!-- </div> -->\n					</div>\n				</div>\n\n				<button ion-button class="btn-apply" clear no-margin>Apply</button>\n				<button (click)="resetFilters()" ion-button color="secondary" no-margin class="btn-reset" clear><ion-icon name="md-refresh" class="hidden-xs"></ion-icon><span class="visible-xs">Reset</span></button>\n			</div>\n		</div>\n\n		<div class="tabular">\n			<div class="tabular__header flex hidden-xs">\n				<div class="tabular__cell cell-1 t-check">\n					<!-- <ion-item no-padding>\n						<ion-checkbox color="dark" no-padding></ion-checkbox>\n					</ion-item> -->\n				</div>\n				<div class="tabular__cell cell-9 t-product">SKU/Product Title/Family</div>\n				<div class="tabular__cell cell-6 t-alias">Alias(es)</div>\n				<div class="tabular__cell cell-5 t-sell">Sellable</div>\n				<div class="tabular__cell cell-2 t-ship">To Ship</div>\n				<div class="tabular__cell cell-4 t-channel">Channels</div>\n				<div class="tabular__cell cell-3 t-hsn">HSN Code</div>\n			</div>\n\n			<!-- .... the loader .... -->\n			<div class="tabular__row flex has-anim-loader" [hidden]="productList.length || priceListLoading == false" *ngFor="let dummy of dummyProducts">\n				<div class="masked masked--prices">\n					<div class="masked__bg">\n						<div class="masked__elements">\n							<div class="masked__elem masked--1"></div>\n							<div class="masked__elem masked--2"></div>\n							<div class="masked__elem masked--3"></div>\n							<div class="masked__elem masked--4"></div>\n							<div class="masked__elem masked--5"></div>\n							<div class="masked__elem masked--6"></div>\n							<div class="masked__elem masked--7"></div>\n							<div class="masked__elem masked--8"></div>\n							<div class="masked__elem masked--9"></div>\n							<div class="masked__elem masked--10"></div>\n							<div class="masked__elem masked--11"></div>\n							<div class="masked__elem masked--12"></div>\n							<div class="masked__elem masked--13"></div>\n							<div class="masked__elem masked--14"></div>\n							<div class="masked__elem masked--15"></div>\n							<div class="masked__elem masked--16"></div>\n						</div>\n					</div>\n				</div>\n			</div>\n\n			<!-- .... add class "violated" to this tabular__row if there\'s a violation here .... -->\n			<!-- .... add class "open" when tapped or clicked .... -->\n			<div class="tabular__row flex" *ngIf="!priceListLoading && !productList.length"  style="justify-content: center;">\n				<strong>No records found</strong>\n			</div>\n\n\n      		<div class="tabular__row flex" (mouseleave)="itemMouseOut(item)" (mouseover)="itemtMouseOver(item)" [class.open]="item.open" *ngFor="let item of productList | paginate: paginationConfig">\n\n				<div class="tabular-mob-header">\n					<div class="header-secondary replace-header">\n						<ul class="nav sku-menu">\n							<li  class="visible-xs sku-menu__hb"> <ion-icon name="ios-arrow-back"></ion-icon></li>\n							<li class="sku-menu__title"><h2>Product Details</h2></li>\n						</ul>\n					</div>\n				</div>\n				<div class="tabular__cell cell-1 hidden-xs t-check">\n					<ion-item no-padding>\n						<ion-checkbox color="dark" no-padding></ion-checkbox>\n					</ion-item>\n				</div>\n				<div class="tabular__cell cell-9 flex t-product">\n					<div class="img-wrap" margin-right style="background-image: url()">\n						<img src="{{ item.image_path }}" width="110" alt="">\n					</div>\n					<div class="text-wrap">\n						<span class="sku"><a href="#">{{ item.sku_code }}</a></span>\n						<p><a target="blank" href="#" class="prod-title">{{ item.readable_name }}e</a></p>\n						<p class="prod-family">Family: <span>{{ item.product_family }}</span></p>\n						<a (click)="showModal()" class="prod-action">+ Add to a Product Family</a>\n						<a (click)="showModal()" class="prod-action">+ Map a Listing (add Alias)</a>\n					</div>\n				</div>\n				<div class="tabular__cell cell-6 t-alias">\n					<!-- .... show this span only if there\'s a violation .... -->\n					<!-- .... also add a class to the parent \'tabular__row\' instructions at the div .... -->\n					<!--<span class="violation-icon">\n						<img src="../assets/img/viol.png" alt="">\n					</span>-->\n					<div class="visible-xs">\n						<strong class="mobile-title">Alias(es)</strong>\n					</div>\n					<ul class="sku-code" *ngFor="let alias of item.sku_aliases">\n						<li>\n                <ion-badge color="success" text-uppercase>{{ alias[1] }}</ion-badge> {{ alias[0] }}\n						</li>\n					</ul>\n				</div>\n				<div class="tabular__cell cell-5 t-sellable">\n					<div class="visible-xs">\n						<strong class="mobile-title">Sellable</strong>\n					</div>\n					<p>\n						<strong class="big text-success">{{ item.in_stock }}</strong> <ion-icon name="information-circle" class="text-warning"></ion-icon>\n					</p>\n					<p class="text-info">Seller Stocked : {{ item.seller_in_stock }}</p>\n					<p class="text-grey">MP Stocked : {{ item.marketplace_in_stock }}</p>\n				</div>\n				<div class="tabular__cell cell-2 t-ship">\n					<div class="visible-xs">\n						<strong class="mobile-title">To Ship</strong>\n					</div>\n					<strong class="big">{{ item.to_ship }}</strong>\n				</div>\n				<div class="tabular__cell cell-4 t-channel">\n					<div class="visible-xs">\n						<strong class="mobile-title">Channels</strong>\n					</div>\n					<ul *ngFor="let channel of item.channels">\n			            <li>\n			              <a href="#">\n			                <img src="{{ envVariables.assetsFolder }}{{ channel.favicon_path }}" [ngClass]="(channel.status_on_channel==0)?\'disabled\':(channel.quantity_on_channel <= 0) ? \'channelFaviconImageRed\':\'channelFaviconImageGreen\'">\n			                </a>\n			            </li>\n					</ul>\n				</div>\n				<div class="tabular__cell cell-3 t-hsn">\n					<div class="visible-xs">\n						<strong class="mobile-title">HSN code</strong>\n					</div>\n\n					<button ion-button color="" icon-only small outline (click)="toggleHSNDisplay()">\n						<ion-icon name="create"></ion-icon>\n					</button>\n\n					<div class="flex" [ngClass]="{\'hidden\': hideHSN}">\n						<ion-item>\n							<ion-input type="text" value="" placeholder="Edit HSN"></ion-input>\n						</ion-item>\n						<button ion-button color="danger" icon-only small clear>\n							<ion-icon name="checkmark"></ion-icon>\n						</button>\n					</div>\n				</div>\n\n				<div class="tabbed tabular__moreinfo" padding-horizontal>\n					<ion-segment [(ngModel)]="selectedDetail">\n						<ion-segment-button value="wstock">\n							Warehouse Stock\n						</ion-segment-button>\n						<ion-segment-button value="cstock">\n							Channel Stock\n						</ion-segment-button>\n						<ion-segment-button value="price">\n							Channel Price\n						</ion-segment-button>\n					</ion-segment>\n\n					<div [ngSwitch]="selectedDetail" class="tabbed__panels">\n						<ion-list *ngSwitchCase="\'wstock\'" padding no-margin>\n							Warehouse Stock Details\n						</ion-list>\n						<ion-list *ngSwitchCase="\'cstock\'" padding no-margin>\n							Channel Stock Details\n						</ion-list>\n						<ion-list *ngSwitchCase="\'price\'" padding no-margin>\n							Channel Price Details\n						</ion-list>\n					</div>\n				</div>\n			</div>\n\n			<!--add pagination here-->\n			<pagination-controls (pageChange)="pagChanged($event)" autoHide="true"></pagination-controls>\n		</div>\n\n	</div>\n\n</ion-content>\n'/*ion-inline-end:"/home/ajantoniof/.bin/bt/Inventory/src/pages/stock/stock.html"*/,
     }),
-    __param(4, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* Inject */])(__WEBPACK_IMPORTED_MODULE_3__app_ev_ev_token__["a" /* EnvVariables */])),
+    __param(4, __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["h" /* Inject */])(__WEBPACK_IMPORTED_MODULE_3__app_ev_ev_token__["a" /* EnvVariables */])),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_2__angular_common__["e" /* Location */],
+        __WEBPACK_IMPORTED_MODULE_2__angular_common__["b" /* Location */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* ModalController */], Object, __WEBPACK_IMPORTED_MODULE_4__providers_sku_details_service_sku_details_service__["a" /* SkuDetailsServiceProvider */]])
 ], StockPage);
 
@@ -198,7 +198,7 @@ StockPage = __decorate([
 
 var PaginationService = (function () {
     function PaginationService() {
-        this.change = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* EventEmitter */]();
+        this.change = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* EventEmitter */]();
         this.instances = {};
         this.DEFAULT_ID = 'DEFAULT_PAGINATION_ID';
     }
@@ -405,7 +405,7 @@ var PaginatePipe = (function () {
     return PaginatePipe;
 }());
 PaginatePipe.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["X" /* Pipe */], args: [{
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* Pipe */], args: [{
                 name: 'paginate',
                 pure: false
             },] },
@@ -436,7 +436,7 @@ var PaginationControlsComponent = (function () {
         this.screenReaderPaginationLabel = 'Pagination';
         this.screenReaderPageLabel = 'page';
         this.screenReaderCurrentLabel = "You're on page";
-        this.pageChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* EventEmitter */]();
+        this.pageChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* EventEmitter */]();
         this._directionLinks = true;
         this._autoHide = false;
     }
@@ -468,22 +468,22 @@ PaginationControlsComponent.decorators = [
                 template: DEFAULT_TEMPLATE,
                 styles: [DEFAULT_STYLES],
                 changeDetection: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_7" /* ChangeDetectionStrategy */].OnPush,
-                encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* ViewEncapsulation */].None
+                encapsulation: __WEBPACK_IMPORTED_MODULE_0__angular_core__["T" /* ViewEncapsulation */].None
             },] },
 ];
 /** @nocollapse */
 PaginationControlsComponent.ctorParameters = function () { return []; };
 PaginationControlsComponent.propDecorators = {
-    'id': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-    'maxSize': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-    'directionLinks': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-    'autoHide': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-    'previousLabel': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-    'nextLabel': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-    'screenReaderPaginationLabel': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-    'screenReaderPageLabel': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-    'screenReaderCurrentLabel': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-    'pageChange': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Output */] },],
+    'id': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+    'maxSize': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+    'directionLinks': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+    'autoHide': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+    'previousLabel': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+    'nextLabel': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+    'screenReaderPaginationLabel': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+    'screenReaderPageLabel': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+    'screenReaderCurrentLabel': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+    'pageChange': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Output */] },],
 };
 
 /**
@@ -497,7 +497,7 @@ var PaginationControlsDirective = (function () {
         this.service = service;
         this.changeDetectorRef = changeDetectorRef;
         this.maxSize = 7;
-        this.pageChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["E" /* EventEmitter */]();
+        this.pageChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["l" /* EventEmitter */]();
         this.pages = [];
         this.changeSub = this.service.change
             .subscribe(function (id) {
@@ -671,7 +671,7 @@ var PaginationControlsDirective = (function () {
     return PaginationControlsDirective;
 }());
 PaginationControlsDirective.decorators = [
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["I" /* Directive */], args: [{
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["p" /* Directive */], args: [{
                 selector: 'pagination-template,[pagination-template]',
                 exportAs: 'paginationApi'
             },] },
@@ -679,12 +679,12 @@ PaginationControlsDirective.decorators = [
 /** @nocollapse */
 PaginationControlsDirective.ctorParameters = function () { return [
     { type: PaginationService, },
-    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Y" /* ChangeDetectorRef */], },
+    { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* ChangeDetectorRef */], },
 ]; };
 PaginationControlsDirective.propDecorators = {
-    'id': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-    'maxSize': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["N" /* Input */] },],
-    'pageChange': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["_4" /* Output */] },],
+    'id': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+    'maxSize': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* Input */] },],
+    'pageChange': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["M" /* Output */] },],
 };
 
 var NgxPaginationModule = (function () {
@@ -694,7 +694,7 @@ var NgxPaginationModule = (function () {
 }());
 NgxPaginationModule.decorators = [
     { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["a" /* NgModule */], args: [{
-                imports: [__WEBPACK_IMPORTED_MODULE_1__angular_common__["c" /* CommonModule */]],
+                imports: [__WEBPACK_IMPORTED_MODULE_1__angular_common__["e" /* CommonModule */]],
                 declarations: [
                     PaginatePipe,
                     PaginationControlsComponent,

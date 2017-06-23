@@ -16,7 +16,7 @@ export class StockPage {
               private location: Location,
               public modalCtrl: ModalController,
               @Inject(EnvVariables) public envVariables,
-              public skuDetails: SkuDetailsServiceProvider
+              public skuDetailsAPI: SkuDetailsServiceProvider
   ) {
   }
 
@@ -28,12 +28,12 @@ export class StockPage {
 
   private dummyProducts = [];
 
-  ionViewDidLoad() {
+/*  private skuSubscribe: any = null;*/
+  private filters = {};
+
+  ionViewDidEnter() {
     console.log('ionViewDidLoad StockPage');
-    let params: {};
-    console.log(this.skuDetails.getSKUDetailsDummy());
-    this.productList = this.skuDetails.getSKUDetailsDummy();
-    this.productList = this.productList.data.data;
+    this.getSkuList();
   }
 
   private itemtMouseOver(item: any): void{
@@ -89,6 +89,37 @@ export class StockPage {
   showModal() {
       const modal = this.modalCtrl.create('ModalPage');
       modal.present();
+  }
+
+  private getSkuList(page: number = 1): any{
+
+    return new Promise((resolve,reject) => {
+      this.skuDetailsAPI.getSKUDetails(this.filters)
+        .then((res) => {
+          console.log("response", res);
+          this.productList = res.data.data;
+          resolve(res.data)
+        })
+        .catch((err) => {
+          console.warn("err", err);
+          this.productList = this.skuDetailsAPI.getSKUDetailsDummy();
+          this.productList = this.productList.data.data;
+          resolve(err)
+        });
+    });
+
+   /* this.skuSubscribe = this.skuDetailsAPI.getSKUDetails(this.filters,'observable')
+      .subscribe((res) => {
+          console.log('skus', res);
+
+        },
+        (err) => {
+          console.warn(err)
+        },
+        () => {
+          this.skuSubscribe.unsubscribe();
+          this.skuSubscribe = null;
+        })*/
   }
 
 }

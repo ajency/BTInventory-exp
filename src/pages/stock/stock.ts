@@ -65,11 +65,13 @@ export class StockPage {
   private filterOptions: any = {
   	search: {
   	},
-  	direction: {
+  	quantity: {
   	},
   	sort: {
   	},
   	price: {
+  	},
+  	warehouse: {
   	}
   }
 

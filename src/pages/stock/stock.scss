@@ -78,6 +78,9 @@ page-stock {
 				width: 100%;
 				order: 1;
 			}
+			.t-ship, .t-sellable, .t-alias, .t-seller, .t-channel, .t-hsn{
+				display: none;
+			}
 			.t-ship {
 				order: 4;
 				width: 50%;
@@ -135,6 +138,7 @@ page-stock {
 				}
 				.t-ship, .t-sellable, .t-alias, .t-seller, .t-channel, .t-hsn{
 					padding: 15px 15px 0;
+					display: block;
 				}
 				.t-hsn{
 					display: flex;

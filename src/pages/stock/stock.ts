@@ -18,14 +18,20 @@ export class StockPage {
               @Inject(EnvVariables) public envVariables,
               public skuDetailsAPI: SkuDetailsServiceProvider
   ) {
+  	for(let x = 0; x < this.defaultFilters.limit; x++){
+  	  this.dummyProducts.push({});
+  	}
   }
 
   private priceSlider: any = { lower: 1050, upper: 2000 };
-
   private hideFilter: boolean = true;
   private hideHSN: boolean = true;
   private productList: any = [];
-
+  private priceListLoading: boolean = false;
+  private defaultFilters = {
+    limit: 20,
+    page: 1
+  }
   private dummyProducts = [];
 
 /*  private skuSubscribe: any = null;*/
@@ -128,6 +134,8 @@ export class StockPage {
   }
 
   private getSkuList(): any{
+  	this.priceListLoading = true
+
     return new Promise((resolve,reject) => {
       console.log(this.filters);
       this.skuDetailsAPI.getSKUDetails(this.filters)

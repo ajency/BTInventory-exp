@@ -9,6 +9,7 @@ import { InventoryApp } from './app.component';
 import { SkuDetailsServiceProvider } from '../providers/sku-details-service/sku-details-service';
 
 import { EnvironmentsModule } from '../app/ev/ev.module';
+import {AppService} from "../providers/app-service";
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { EnvironmentsModule } from '../app/ev/ev.module';
   providers: [
     StatusBar,
     SplashScreen,
+    AppService,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     SkuDetailsServiceProvider
   ]

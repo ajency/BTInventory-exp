@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import {AppService} from "../app-service";
 
 /*
  Generated class for the SkuDetailsServiceProvider provider.
@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class SkuDetailsServiceProvider {
 
-  private data = {
+  private dummyData = {
     "status": "success",
     "message": "Sku details successfully fetched",
     "data": {
@@ -2581,7 +2581,9 @@ export class SkuDetailsServiceProvider {
     }
   };
 
-  constructor(public http: Http) {
+  private defaultHeaders = {};
+
+  constructor(private appservice: AppService) {
     console.log('Hello SkuDetailsServiceProvider Provider');
   }
 
@@ -2602,19 +2604,15 @@ export class SkuDetailsServiceProvider {
    */
 
   getSKUDetailsDummy() {
-    return this.data;
+    return this.dummyData;
   }
 
-  getSKUDetails(params: object) {
-    console.log("getSKUDetails API func entered");
 
-    //Has no filters
-    let url = 'http://btapp2.ajency.in/skus/getSkuDetails?abvPrice=&abvQty=&blwPrice=&blwQty=&limit=10&page=1&pfFilter=&sku=&skuFilter=sku&sortField=sellable&sortType=DESC&type=to_ship&whsFilter=';
-    return new Promise(resolve => {
-      this.http.request(url).subscribe(data => {
-        console.log(data);
-        resolve(data);
-      });
-    });
+
+  public getSKUDetails(payload: any, type: string = 'promise'): any{
+
+     let url = 'http://btapp2.ajency.in/skus/getSkuDetails?abvPrice=&abvQty=&blwPrice=&blwQty=&limit=10&page=1&pfFilter=&sku=&skuFilter=sku&sortField=sellable&sortType=DESC&type=to_ship&whsFilter=';
+     return this.appservice.request(url,'get',payload, this.defaultHeaders, false, type);
+
   }
 }

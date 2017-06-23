@@ -98,8 +98,7 @@ export class StockPage {
       this.skuDetailsAPI.getSKUDetails(this.filters)
         .then((res) => {
           console.log("response", res);
-          this.productList = res.data;
-          this.productList = this.productList.data.data;
+          this.productList = res.data.data;
           resolve(res.data)
         })
         .catch((err) => {

@@ -140,8 +140,7 @@ var StockPage = (function () {
             _this.skuDetailsAPI.getSKUDetails(_this.filters)
                 .then(function (res) {
                 console.log("response", res);
-                _this.productList = res.data;
-                _this.productList = _this.productList.data.data;
+                _this.productList = res.data.data;
                 resolve(res.data);
             })
                 .catch(function (err) {

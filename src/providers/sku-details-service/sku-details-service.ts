@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {AppService} from "../app-service";
 
@@ -2608,10 +2607,12 @@ export class SkuDetailsServiceProvider {
     return this.data;
   }
 
-  getSKUDetails(params: object) {
 
-    let url = 'http://btapp2.ajency.in/skus/getSkuDetails?abvPrice=&abvQty=&blwPrice=&blwQty=&limit=10&page=1&pfFilter=&sku=&skuFilter=sku&sortField=sellable&sortType=DESC&type=to_ship&whsFilter=';
-    return this.appservice.request(url,'get',params,this.defaultHeaders);
+
+  public getSKUDetails(payload: any, type: string = 'promise'): any{
+
+     let url = 'http://btapp2.ajency.in/skus/getSkuDetails?abvPrice=&abvQty=&blwPrice=&blwQty=&limit=10&page=1&pfFilter=&sku=&skuFilter=sku&sortField=sellable&sortType=DESC&type=to_ship&whsFilter=';
+     return this.appservice.request(url,'get',payload, this.defaultHeaders, false, type);
 
   }
 }

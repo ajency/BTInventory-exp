@@ -20,6 +20,10 @@ export class StockPage {
   ) {
   }
 
+  private priceSlider: any = { lower: 1050, upper: 2000 };
+
+  private hideFilter: boolean = true;
+  private hideHSN: boolean = true;
   private productList: any = [];
 
   private dummyProducts = [];
@@ -56,6 +60,30 @@ export class StockPage {
 
   private pagChanged(page): void{
     this.paginationConfig.currentPage = page;
+  }
+
+  private filterOptions: any = {
+  	search: {
+  	},
+  	quantity: {
+  	},
+  	sort: {
+  	},
+  	price: {
+  	},
+  	warehouse: {
+  	}
+  }
+
+  private toggleDrop(filtertype: string): void{
+    this.filterOptions[filtertype].open = !this.filterOptions[filtertype].open;
+  }
+
+  public toggleFilterDisplay(): void{
+    this.hideFilter = !this.hideFilter;
+  }
+  public toggleHSNDisplay(): void{
+    this.hideHSN = !this.hideHSN;
   }
 
   showModal() {

@@ -35,7 +35,7 @@ page-stock {
 	.tabular{
 		font-size: 12px;
 		.t-hsn{
-			// text-align: center;
+			text-align: center;
 			.item-md{
 				padding: 0;
 			}
@@ -109,6 +109,7 @@ page-stock {
 				order: 6;
 				width: 50%;
 				padding-top: 15px;
+				text-align: left;
 			}
 
 

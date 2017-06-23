@@ -36,14 +36,14 @@
 				<!-- <li class="pri-menu__title"><h2>Import product details from a CSV</h2></li> -->
 				<li class="sku-menu__wrap inventory-tabs show-white">
 					<ul class="sku-menu__full">
-						<li class="active" [class.active]=""><a >Active (1,066)</a></li>
-						<li [class.active]=""><a  class="">To Ship (250)</a></li>
-						<li [class.active]=""><a  class="">Low Stock (15)</a></li>
-						<li [class.active]=""><a  class="">Stock-outs (783)</a></li>
-						<li [class.active]=""><a  class="">Bundles (0)</a></li>
-						<li [class.active]=""><a  class="">All (1,066)</a></li>
-						<li [class.active]=""><a  class="">Unlisted (5)</a></li>
-						<li [class.active]=""><a  class="">Archived (0)</a></li>
+						<li [class.active]="statusTab.active.active"><a (click)="changeStockStatusTab('active')" class="">Active (1,066)</a></li>
+						<li [class.active]="statusTab.to_ship.active"><a (click)="changeStockStatusTab('to_ship')" class="">To Ship (250)</a></li>
+						<li [class.active]="statusTab.low_stock.active"><a (click)="changeStockStatusTab('low_stock')"  class="">Low Stock (15)</a></li>
+						<li [class.active]="statusTab.stock_outs.active"><a (click)="changeStockStatusTab('stock_outs')"  class="">Stock-outs (783)</a></li>
+						<li [class.active]="statusTab.bundles.active"><a (click)="changeStockStatusTab('bundles')"  class="">Bundles (0)</a></li>
+						<li [class.active]="statusTab.all.active"><a (click)="changeStockStatusTab('all')"  class="">All (1,066)</a></li>
+						<li [class.active]="statusTab.unlisted.active"><a (click)="changeStockStatusTab('unlisted')"  class="">Unlisted (5)</a></li>
+						<li [class.active]="statusTab.archived.active"><a (click)="changeStockStatusTab('archived')"  class="">Archived (0)</a></li>
 					</ul>
 				</li>
 				<li class="buttons-right hidden-xs">
@@ -379,7 +379,7 @@
 			</div>
 
 			<!--add pagination here-->
-			<pagination-controls (pageChange)="pagChanged($event)" autoHide="true"></pagination-controls>
+			<pagination-controls (pageChange)="pageChanged($event)" autoHide="true"></pagination-controls>
 		</div>
 
 	</div>

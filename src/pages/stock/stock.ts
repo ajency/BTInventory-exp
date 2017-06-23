@@ -35,7 +35,7 @@ export class StockPage {
   private dummyProducts = [];
 
 /*  private skuSubscribe: any = null;*/
-  private filters = {};
+  private filters = this.skuDetailsAPI.getDefaultFilters();
 
   ionViewDidEnter() {
     console.log('ionViewDidLoad StockPage');
@@ -64,7 +64,7 @@ export class StockPage {
     totalItems: 0
   };
 
-  private pagChanged(page): void{
+  private pageChanged(page): void{
     this.paginationConfig.currentPage = page;
   }
 
@@ -87,6 +87,36 @@ export class StockPage {
   	}
   }
 
+  private statusTab: any = {
+    active: {
+      active : true,
+    },
+    to_ship: {
+      active : false,
+    },
+    low_stock: {
+      active : false,
+    },
+    stock_outs: {
+      active : false,
+    },
+    warehouse: {
+      active : false,
+    },
+    bundles: {
+      active : false,
+    },
+    all: {
+      active : false,
+    },
+    unlisted: {
+      active : false,
+    },
+    archived: {
+      active : false,
+    }
+  }
+
   private toggleDrop(filtertype: string): void{
     this.filterOptions[filtertype].open = !this.filterOptions[filtertype].open;
   }
@@ -103,10 +133,11 @@ export class StockPage {
       modal.present();
   }
 
-  private getSkuList(page: number = 1): any{
+  private getSkuList(): any{
   	this.priceListLoading = true
 
     return new Promise((resolve,reject) => {
+      console.log(this.filters);
       this.skuDetailsAPI.getSKUDetails(this.filters)
         .then((res) => {
           console.log("response", res);
@@ -133,6 +164,20 @@ export class StockPage {
           this.skuSubscribe.unsubscribe();
           this.skuSubscribe = null;
         })*/
+  }
+
+  public changeStockStatusTab(status: string){
+
+    if(status == 'all') {
+      delete this.filters['type'];
+    } else {
+      this.filters['type'] = status;
+    }
+    for(let status in this.statusTab){
+      this.statusTab[status]['active'] = false;
+    }
+    this.statusTab[status]['active'] = true;
+    this.getSkuList();
   }
 
 }

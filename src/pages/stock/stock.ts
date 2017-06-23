@@ -27,7 +27,9 @@ export class StockPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad StockPage');
     let params: {};
-    this.skuDetails.getSKUDetails(params);
+    console.log(this.skuDetails.getSKUDetailsDummy());
+    this.productList = this.skuDetails.getSKUDetailsDummy();
+    this.productList = this.productList.data.data;
   }
 
   private itemtMouseOver(item: any): void{

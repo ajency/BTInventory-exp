@@ -8,6 +8,11 @@ import {AppService} from "../app-service";
  See https://angular.io/docs/ts/latest/guide/dependency-injection.html
  for more info on providers and Angular DI.
  */
+
+interface Filters<FV> {
+  [id: string]: FV;
+}
+
 @Injectable()
 export class SkuDetailsServiceProvider {
 
@@ -2583,36 +2588,40 @@ export class SkuDetailsServiceProvider {
 
   private defaultHeaders = {};
 
+  private filters: Filters<any>;
+
   constructor(private appservice: AppService) {
     console.log('Hello SkuDetailsServiceProvider Provider');
+    this.filters = {}
+    this.filters["abvPrice"] = '';
+    this.filters["abvQty"] = '';
+    this.filters["blwPrice"] = '';
+    this.filters["blwQty"] = '';
+    this.filters["limit"] = 10;
+    this.filters["page"] = 1;
+    this.filters["pfFilter"] = '';
+    this.filters["sku"] = '';
+    this.filters["skuFilter"] = '';
+    this.filters["sortField"]  = 'sellable';
+    this.filters["sortType"]  = 'DESC';
+    this.filters["type"] = 'active';
+    this.filters["whsFilter"] = '';
   }
-
-  /*
-   abvPrice:
-   abvQty:
-   blwPrice:
-   blwQty:
-   limit:10
-   page:1
-   pfFilter:
-   sku:
-   skuFilter:sku
-   sortField:sellable
-   sortType:DESC
-   type:to_ship
-   whsFilter:
-   */
 
   getSKUDetailsDummy() {
     return this.dummyData;
   }
 
+  getDefaultFilters() {
+    return this.filters;
+  }
 
+  public getSKUDetails(filters: {}, type: string = 'promise'): any{
+/*     let url = 'http://btapp2.ajency.in/skus/getSkuDetails?abvPrice=&abvQty=&blwPrice=&blwQty=&limit=10&page=1&pfFilter=&sku=&skuFilter=sku&sortField=sellable&sortType=DESC&type=to_ship&whsFilter=';*/
 
-  public getSKUDetails(payload: any, type: string = 'promise'): any{
-
-     let url = 'http://btapp2.ajency.in/skus/getSkuDetails?abvPrice=&abvQty=&blwPrice=&blwQty=&limit=10&page=1&pfFilter=&sku=&skuFilter=sku&sortField=sellable&sortType=DESC&type=to_ship&whsFilter=';
-     return this.appservice.request(url,'get',payload, this.defaultHeaders, false, type);
+     this.filters = filters;
+     let url = 'http://btapp2.ajency.in/skus/getSkuDetails';
+     return this.appservice.request(url,'get',this.filters, this.defaultHeaders, false, type);
 
   }
 }

@@ -1,18 +1,14 @@
 .filters {
 	padding: 15px 0 0;
-	align-items: center;
+	align-items: flex-start;
 	flex-wrap: wrap;
-	&.bottom{
-		padding-top: 0;
-		padding-bottom: 15px;
-	}
+
 	&, .btn {
 		font-size: 13px;
 	}
 	&__wrap {
 		// z-index: 10;
-		max-height: 60px;
-		margin-top: 15px;
+		max-height: 1000px;
 		transition: all 0.3s ease;
 		.button {
 			text-transform: none;
@@ -35,11 +31,6 @@
 
 	}
 
-	&__actions{
-		border-left: 1px solid lighten($border-base, 1%);
-		padding: 2px 10px;
-		margin-left: 6px;
-	}
 
 	&__search {
 		border: 1px solid $border-base;
@@ -70,7 +61,7 @@
 		}
 	}
 	&__toggle {
-		padding: 10px;
+		padding: 0 10px;
 		// width: 50px;
 		position: relative;
 		display: flex;
@@ -81,13 +72,33 @@
 	}
 	&__multi{
 		padding: 5px 10px;
-		border-right: 1px solid lighten($border-base, 1%);
+		// margin-top: 15px;
+	}
+	@media (min-width: 768px) {
+		&__wrap {
+			margin-top: 15px;
+			max-height: 60px;
+		}
+		&__multi{
+			border-right: 1px solid lighten($border-base, 1%);
+		}
+		&__actions{
+			border-left: 1px solid lighten($border-base, 1%);
+			padding: 2px 10px;
+			margin-left: 6px;
+		}
+		&__btn-wrapper{
+			display: flex;
+		}
+		&.bottom{
+			padding-top: 0;
+			padding-bottom: 15px;
+		}
 	}
 	@media (min-width: 768px) and (max-width: 1170px) {
 		&__wrap {
 			width: 100%;
 			padding-top: 15px;
-			margin-top: 15px;
 			border-top: 1px solid #ebebeb;
 		}
 		.filters__toggle.open:before, .filters__toggle.open:after {
@@ -146,14 +157,14 @@
 		}
 	}
 	@media screen and (max-width: 767px) {
-		padding: 0 15px;
+		padding: 5px;
 		margin-bottom: 15px;
 		background: #fff;
 		box-shadow: 0 0 8px rgba(0,0,0,0.1);
 		flex-wrap: wrap;
 		justify-content: space-between;
 		&__search {
-			width: 86%;
+			// width: 86%;
 			border: 0;
 			border-radius: 0;
 			border-bottom: 1px solid $border-base;
@@ -170,10 +181,10 @@
 			}
 		}
 		&__toggle {
-			padding: 14px 8px;
+			// padding: 14px 8px;
 			width: auto;
 		}
-		&__wrap {
+		&__wrap, &__btn-wrapper {
 			flex-direction: column;
 			width: 100%;
 			position: relative;
@@ -197,6 +208,13 @@
 				justify-content: flex-start;
 			}
 		}
+		&__multi{
+			display: flex;
+			align-items: center;
+			ion-checkbox{
+				margin-right: 5px;
+			}
+		}
 		&__price {
 			width: 100%;
 		}
@@ -212,6 +230,25 @@
 			top: 0;
 			width: auto;
 			padding: 7px 12px;
+		}
+		&.top{
+			padding-top: 10px;
+			.bt-dropdown{
+				// width: auto;
+				// border: none;
+			}
+		}
+		&.bottom {
+			padding: 0 15px;
+		}
+		&__btn-wrapper{
+			width: 100%;
+			// display: flex;
+			padding: 10px;
+			&:before {
+				content: '';
+				padding: 0;
+			}
 		}
 	}
 

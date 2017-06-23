@@ -1,3 +1,3 @@
 export const devVariables = {
-  assetsFolder: '/assets/'
+  assetsFolder: '/IonicApps/Inventory/www/assets/'
 };

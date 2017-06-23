@@ -31,9 +31,8 @@ export class StockPage {
 /*  private skuSubscribe: any = null;*/
   private filters = {};
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     console.log('ionViewDidLoad StockPage');
-    console.log(this.skuDetailsAPI.getSKUDetailsDummy());
     this.getSkuList();
   }
 
@@ -103,7 +102,9 @@ export class StockPage {
         })
         .catch((err) => {
           console.warn("err", err);
-          reject(err)
+          this.productList = this.skuDetailsAPI.getSKUDetailsDummy();
+          this.productList = this.productList.data.data;
+          resolve(err)
         });
     });
 

@@ -11,7 +11,7 @@ import {AppService} from "../app-service";
 @Injectable()
 export class SkuDetailsServiceProvider {
 
-  private data = {
+  private dummyData = {
     "status": "success",
     "message": "Sku details successfully fetched",
     "data": {
@@ -2604,7 +2604,7 @@ export class SkuDetailsServiceProvider {
    */
 
   getSKUDetailsDummy() {
-    return this.data;
+    return this.dummyData;
   }
 
 

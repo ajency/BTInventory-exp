@@ -32,6 +32,7 @@ export class StockPage {
     console.log('ionViewDidLoad StockPage');
     let params: {};
     console.log(this.skuDetails.getSKUDetailsDummy());
+    console.log(this.skuDetails.getSKUDetails(params));
     this.productList = this.skuDetails.getSKUDetailsDummy();
     this.productList = this.productList.data.data;
   }

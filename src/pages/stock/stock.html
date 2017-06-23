@@ -81,7 +81,7 @@
 				<strong>No records found</strong>
 			</div>
 
-			<!-- <div class="tabular__row flex" (mouseleave)="itemMouseOut(item)" (mouseover)="itemtMouseOver(item)" [class.open]="item.open" *ngFor="let item of productList | paginate: paginationConfig"> -->
+      <div class="tabular__row flex" (mouseleave)="itemMouseOut(item)" (mouseover)="itemtMouseOver(item)" [class.open]="item.open" *ngFor="let item of productList | paginate: paginationConfig">
 			<div class="tabular__row flex open" >
 				<div class="tabular-mob-header">
 					<div class="header-secondary replace-header">
@@ -98,12 +98,12 @@
 				</div>
 				<div class="tabular__cell cell-9 flex t-product">
 					<div class="img-wrap" margin-right style="background-image: url()">
-						<img src="https://btesimages.s3.amazonaws.com/Fur%20Jaden/h183_tan_1.jpg" width="110" alt="">
+						<img src="{{ item.image_path }}" width="110" alt="">
 					</div>
 					<div class="text-wrap">
-						<span class="sku"><a href="#">123456</a></span>
-						<p><a target="blank" href="#" class="prod-title">some name here</a></p>
-						<p class="prod-family">Family: <span>Tote Bag</span></p>
+						<span class="sku"><a href="#">{{ item.sku_code }}</a></span>
+						<p><a target="blank" href="#" class="prod-title">{{ item.readable_name }}e</a></p>
+						<p class="prod-family">Family: <span>{{ item.product_family }}</span></p>
 						<a (click)="showModal()" class="prod-action">+ Add to a Product Family</a>
 						<a (click)="showModal()" class="prod-action">+ Map a Listing (add Alias)</a>
 					</div>
@@ -117,15 +117,9 @@
 					<div class="visible-xs">
 						<strong class="mobile-title">Alias(es)</strong>
 					</div>
-					<ul class="sku-code">
+					<ul class="sku-code" *ngFor="let alias of item.sku_aliases">
 						<li>
-							<!-- <ion-badge color="success" text-uppercase>default</ion-badge> --> FTTFUR0098
-						</li>
-						<li>
-							<!-- <ion-badge color="success" text-uppercase>default</ion-badge> --> FTTFUR0098
-						</li>
-						<li>
-							<!-- <ion-badge color="success" text-uppercase>default</ion-badge> --> FTTFUR0098
+                <ion-badge color="success" text-uppercase>{{ alias[1] }}</ion-badge> {{ alias[0] }}
 						</li>
 					</ul>
 				</div>
@@ -134,31 +128,26 @@
 						<strong class="mobile-title">Sellable</strong>
 					</div>
 					<p>
-						<strong class="big text-success">89</strong> <ion-icon name="information-circle" class="text-warning"></ion-icon>
+						<strong class="big text-success">{{ item.in_stock }}</strong> <ion-icon name="information-circle" class="text-warning"></ion-icon>
 					</p>
-					<p class="text-info">Seller Stocked : 45</p>
-					<p class="text-grey">MP Stocked : 44</p>
+					<p class="text-info">Seller Stocked : {{ item.seller_in_stock }}</p>
+					<p class="text-grey">MP Stocked : {{ item.marketplace_in_stock }}</p>
 				</div>
 				<div class="tabular__cell cell-2 t-ship">
 					<div class="visible-xs">
 						<strong class="mobile-title">To Ship</strong>
 					</div>
-					<strong class="big">7</strong>
+					<strong class="big">{{ item.to_ship }}</strong>
 				</div>
 				<div class="tabular__cell cell-4 t-channel">
 					<div class="visible-xs">
 						<strong class="mobile-title">Channels</strong>
 					</div>
-					<ul>
+					<ul *ngFor="let channel of item.channels">
             <li>
               <a href="#">
-                <img src="{{ envVariables.assetsFolder }}img/icons/icon_favamazon.png" class="channelFaviconImageGreen"> <!-- class="channelFaviconImageRed disabled" if disabled -->
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <img src="{{ envVariables.assetsFolder }}/img/icons/icon_flipkart.png" class="channelFaviconImageRed disabled"> <!-- class="channelFaviconImageRed disabled" if disabled -->
-              </a>
+                <img src="{{ envVariables.assetsFolder }}{{ channel.favicon_path }}" [ngClass]="(channel.status_on_channel==0)?'disabled':(channel.quantity_on_channel <= 0) ? 'channelFaviconImageRed':'channelFaviconImageGreen'">
+                </a>
             </li>
 					</ul>
 				</div>
@@ -203,6 +192,7 @@
 				</div>
 			</div>
 
+      </div>
 			<!--add pagination here-->
 			<pagination-controls (pageChange)="pagChanged($event)" autoHide="true"></pagination-controls>
 		</div>

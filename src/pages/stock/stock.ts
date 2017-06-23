@@ -72,6 +72,12 @@ export class StockPage {
   	price: {
   	},
   	warehouse: {
+  	},
+  	selected: {
+  	},
+  	add: {
+  	},
+  	bulk: {
   	}
   }
 

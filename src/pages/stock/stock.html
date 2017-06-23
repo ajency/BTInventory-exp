@@ -60,6 +60,55 @@
 			</div>
 			<!-- .... On click of this button  ... -->
 			<a (click)="toggleFilterDisplay()" class="filters__toggle"><ion-icon name="funnel" color="primary"></ion-icon></a>
+
+			<div class="bt-dropdown" [class.open]="filterOptions.selected.open">
+				<!-- .... On click of this button, add class "open" to the parent div "bt-dropdown" .... -->
+				<!-- .... just adding the class will show the dropdown .... -->
+				<button (click)="toggleDrop('selected')" ion-button color="secondary" small outline no-margin class="bt-dropdown__btn button-drop">
+					<span class="plusicon visible-xs-inline-block"></span> For Selected <ion-icon name="ios-arrow-down" class="hidden-xs icon-small"></ion-icon>
+				</button>
+				<div class="bt-dropdown__dd">
+					<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Reset stock to..</button>
+					<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Assign a Product Family</button>
+					<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Add to basket</button>
+					<div class="separator-h"></div>
+					<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Archive SKUs</button>
+					<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Unarchive SKUs</button>
+					<div class="separator-h"></div>
+					<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Delete SKUs</button>
+				</div>
+			</div>
+
+			<div class="filters__actions">
+				<div class="bt-dropdown" [class.open]="filterOptions.add.open">
+					<!-- .... On click of this button, add class "open" to the parent div "bt-dropdown" .... -->
+					<!-- .... just adding the class will show the dropdown .... -->
+					<button (click)="toggleDrop('add')" ion-button color="dark" small outline no-margin class="bt-dropdown__btn button-drop">
+						<span class="plusicon visible-xs-inline-block"></span> <span class="plusicon"></span> Add <ion-icon name="ios-arrow-down" class="hidden-xs icon-small"></ion-icon>
+					</button>
+					<div class="bt-dropdown__dd">
+						<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Add a Product</button>
+						<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Add a Bundle</button>
+					</div>
+				</div>
+				<div class="bt-dropdown" [class.open]="filterOptions.bulk.open">
+					<!-- .... On click of this button, add class "open" to the parent div "bt-dropdown" .... -->
+					<!-- .... just adding the class will show the dropdown .... -->
+					<button (click)="toggleDrop('bulk')" ion-button color="dark" small outline no-margin class="bt-dropdown__btn button-drop">
+						<span class="plusicon visible-xs-inline-block"></span> <span class="plusicon"></span> Bulk <ion-icon name="ios-arrow-down" class="hidden-xs icon-small"></ion-icon>
+					</button>
+					<div class="bt-dropdown__dd">
+						<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk Add Products</button>
+						<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk Update Product Info</button>
+						<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk Stock Reset</button>
+						<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk LSP Reset</button>
+						<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk Assign Tax Rule</button>
+						<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk Set Channel Stock</button>
+						<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk Add Bundles</button>
+						<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk Add Sku Aliases</button>
+					</div>
+				</div>
+			</div>
 		</div>
 
 		<div class="filters flex bottom">
@@ -243,9 +292,9 @@
 					<div class="visible-xs">
 						<strong class="mobile-title">Alias(es)</strong>
 					</div>
-					<ul class="sku-code" *ngFor="let alias of item.sku_aliases">
-						<li>
-                <ion-badge color="success" text-uppercase>{{ alias[1] }}</ion-badge> {{ alias[0] }}
+					<ul class="sku-code">
+						<li *ngFor="let alias of item.sku_aliases">
+                			<ion-badge color="default" text-uppercase>{{ alias[1] }}</ion-badge> {{ alias[0] }}
 						</li>
 					</ul>
 				</div>
@@ -269,11 +318,11 @@
 					<div class="visible-xs">
 						<strong class="mobile-title">Channels</strong>
 					</div>
-					<ul *ngFor="let channel of item.channels">
-			            <li>
+					<ul>
+			            <li *ngFor="let channel of item.channels">
 			              <a href="#">
 			                <img src="{{ envVariables.assetsFolder }}{{ channel.favicon_path }}" [ngClass]="(channel.status_on_channel==0)?'disabled':(channel.quantity_on_channel <= 0) ? 'channelFaviconImageRed':'channelFaviconImageGreen'">
-			                </a>
+			               </a>
 			            </li>
 					</ul>
 				</div>

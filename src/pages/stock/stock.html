@@ -243,9 +243,9 @@
 					<div class="visible-xs">
 						<strong class="mobile-title">Alias(es)</strong>
 					</div>
-					<ul class="sku-code" *ngFor="let alias of item.sku_aliases">
-						<li>
-                <ion-badge color="success" text-uppercase>{{ alias[1] }}</ion-badge> {{ alias[0] }}
+					<ul class="sku-code">
+						<li *ngFor="let alias of item.sku_aliases">
+                			<ion-badge color="default" text-uppercase>{{ alias[1] }}</ion-badge> {{ alias[0] }}
 						</li>
 					</ul>
 				</div>
@@ -269,11 +269,11 @@
 					<div class="visible-xs">
 						<strong class="mobile-title">Channels</strong>
 					</div>
-					<ul *ngFor="let channel of item.channels">
-			            <li>
+					<ul>
+			            <li *ngFor="let channel of item.channels">
 			              <a href="#">
 			                <img src="{{ envVariables.assetsFolder }}{{ channel.favicon_path }}" [ngClass]="(channel.status_on_channel==0)?'disabled':(channel.quantity_on_channel <= 0) ? 'channelFaviconImageRed':'channelFaviconImageGreen'">
-			                </a>
+			               </a>
 			            </li>
 					</ul>
 				</div>

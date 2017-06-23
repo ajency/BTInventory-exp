@@ -254,10 +254,13 @@ page-stock {
 			flex-wrap: wrap;
 		}
 		li{
-			padding: 1% 4%;
+			padding: 1% 2%;
 		}
 		a{
 			opacity: 1;
+			&:hover{
+				opacity: 1;
+			}
 		}
 		.channelFaviconImageGreen, .channelFaviconImageRed{
 			border-bottom: 2px solid $bt-green;

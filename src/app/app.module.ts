@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { InventoryApp } from './app.component';
 import { SkuDetailsServiceProvider } from '../providers/sku-details-service/sku-details-service';
 
+import { EnvironmentsModule } from '../app/ev/ev.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { SkuDetailsServiceProvider } from '../providers/sku-details-service/sku-
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(InventoryApp)
+    IonicModule.forRoot(InventoryApp),
+    EnvironmentsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

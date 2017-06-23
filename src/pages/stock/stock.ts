@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { Location } from '@angular/common';
-
+import {EnvVariables} from "../../app/ev/ev.token";
 /**
  * Generated class for the StockPage page.
  *
@@ -15,7 +15,7 @@ import { Location } from '@angular/common';
 })
 export class StockPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private location: Location, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private location: Location, public modalCtrl: ModalController, @Inject(EnvVariables) public envVariables) {
   }
 
   private priceSlider: any = { lower: 1050, upper: 2000 };

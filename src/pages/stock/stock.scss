@@ -225,6 +225,12 @@ page-stock {
 		}
 	}
 
+	.status-dot{
+		position: relative;
+		top: 2px;
+		left: 5px;
+	}
+
 	.prod-family{
 		font-size: 12px;
 		span{
@@ -252,6 +258,13 @@ page-stock {
 		}
 	}
 
+	.sellable-summary{
+		margin-bottom: 10px;
+		ion-icon{
+			font-size: 1.4em;
+		}
+	}
+
 	.t-channel{
 		ul{
 			list-style-type: none;
@@ -259,7 +272,7 @@ page-stock {
 			flex-wrap: wrap;
 		}
 		li{
-			padding: 1% 2%;
+			padding: 3px 5px;
 		}
 		a{
 			opacity: 1;
@@ -273,6 +286,7 @@ page-stock {
 			padding-bottom: 3px;
 			max-width: 100%;
 			height: auto;
+			display: block;
 		}
 		.channelFaviconImageRed{
 			border-bottom: 2px solid $bt-red;

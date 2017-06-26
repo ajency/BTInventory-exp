@@ -282,8 +282,11 @@
 						<img src="{{ item.image_path }}" width="110" alt="">
 					</div>
 					<div class="text-wrap">
-						<span class="sku"><a href="#">{{ item.sku_code }}</a></span>
-						<img src="{{ envVariables.assetsFolder }}img/Active.png" class="status-dot">
+            <span class="sku">
+              <span *ngIf="item.is_bundle==1" class="custom_code_yellow">B</span>
+              <a (ngClass)="{'bundle_sku' : sku.is_bundle==1,'custom_code_black' : sku.is_bundle==0}" href="/skus/view/{{item.id}}">{{item.sku_code}}</a>
+            </span>
+						<img *ngIf="item.is_disabled===0" src="{{ envVariables.assetsFolder }}img/Active.png" class="status-dot">
 						<p><a target="blank" href="#" class="prod-title">{{ item.readable_name }}e</a></p>
 						<p class="prod-family">Family: <span>{{ item.product_family }}</span></p>
 						<a (click)="showModal()" class="prod-action">+ Add to a Product Family</a>
@@ -312,13 +315,13 @@
 					</div>
 					<div class="sellable-summary">
 						<strong class="big text-success">{{ item.in_stock }}</strong>
-						<div class="tooltip">
+						<div class="tooltip" *ngIf="item.warehouse_is_low_stock == 1">
 							<ion-icon name="information-circle" class="text-warning"></ion-icon>
 							<div class="tooltiptext warning">
 								Low Stock in 1 or more Warehouses
 							</div>
 						</div>
-						<div class="tooltip">
+						<div class="tooltip" *ngIf="item.warehouse_stock_out == 1">
 							<ion-icon name="information-circle" class="text-danger"></ion-icon>
 							<div class="tooltiptext danger">
 								Out of Stock in 1 or more Warehouses
@@ -354,11 +357,16 @@
               <a target="_blank" *ngIf="item.listings[channel.Channel.id]" href="{{item.listings[channel.Channel.id].url_on_channel}}">
                 <img src="{{ envVariables.assetsFolder }}{{ channel.ChannelType.favicon_path }}" [ngClass]="(item.listings[channel.Channel.id].quantity_on_channel <= 0) ? 'channelFaviconImageRed':'channelFaviconImageGreen'">
 			                	<div class="tooltiptext " [ngClass]="(item.listings[channel.Channel.id].quantity_on_channel <= 0) ? 'not-active':'active'">
-			                		{{ channel.channel_title }} ({{ channel.username }})<br>
-			                		Status: <strong></strong><br>
-			                		Price: <strong>{{ channel.price_on_channel }}</strong><br>
-			                		SKU: <strong>{{ channel.sku_code_on_channel }}</strong><br>
-			                		Title: <strong>{{ channel.title_on_channel }}</strong>
+                          {{ item.listings[channel.Channel.id].channel_title != null ? item.listings[channel.Channel.id].channel_title : 'Offline Store' }} ({{ item.listings[channel.Channel.id].username }})<br>
+                          <span *ngIf="(item.listings[channel.Channel.id].status_on_channel === 1 || item.listings[channel.Channel.id].quantity_on_channel > 0)">Status: <strong>  Active & In Stock</strong><br></span><span *ngIf="(item.listings[channel.Channel.id].status_on_channel === 0 && item.listings[channel.Channel.id].quantity_on_channel === 0)">Status: <strong> Inactive/Out of Stock </strong><br></span>
+                          <span *ngIf="item.listings[channel.Channel.id].price_on_channel">Price: <strong> {{item.listings[channel.Channel.id].price_on_channel }} </strong><br></span>
+                          <span> Stock: <strong>{{item.listings[channel.Channel.id].quantity_on_channel | number }}</strong><br></span>
+                          <span *ngIf="(item.listings[channel.Channel.id].item_ref && item.sku_aliases.length <=1)">FSN: <strong> {{item.listings[channel.Channel.id].item_ref}} </strong><br></span>
+                          <span *ngIf="(item.listings[channel.Channel.id].item_ref && item.sku_aliases.length > 1)">FSN: <strong> multiple ({{item.sku_aliases.length}} aliases) </strong><br></span>
+                          <span *ngIf="(item.listings[channel.Channel.id].sku_code_on_channel && item.sku_aliases.length <=1)">SKU: <strong> {{item.listings[channel.Channel.id].sku_code_on_channel}} <br></strong></span>
+                          <span *ngIf="(item.listings[channel.Channel.id].sku_code_on_channel && item.sku_aliases.length >1)">SKU: <strong> multiple ({{item.sku_aliases.length}} aliases) </strong><br></span>
+                          <span *ngIf="(item.listings[channel.Channel.id].title_on_channel && item.sku_aliases.length <=1)">Title: <strong> {{item.listings[channel.Channel.id].title_on_channel}} </strong></span>
+                          <span *ngIf="(item.listings[channel.Channel.id].title_on_channel && item.sku_aliases.length >1)">Title: <strong> multiple ({{item.sku_aliases.length}} aliases) </strong></span>
 			                	</div>
 			                </a>
 			            </li>

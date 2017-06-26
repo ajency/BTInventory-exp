@@ -21,6 +21,8 @@ export class AppService {
 
   public request(url: string,type: string, body: object, optionalHeaders: object = {},overrideheaders: boolean = false, returntype: string = 'promise'): any{
 
+
+
     let headers = new Headers({'Content-Type': 'application/json','Accept': 'application/json'});
 
     let opHeaderKeys = Object.keys(optionalHeaders);
@@ -39,7 +41,8 @@ export class AppService {
     let httpEvent;
     if(type === 'get'){
       //TBD construct query params
-      url = url + this.encodeQueryData(body);
+      url = url + '?' + this.encodeQueryData(body);
+      console.log("url" + url);
       httpEvent = this.http.get(url,{headers: headers})
     }
     else if(type === 'post'){

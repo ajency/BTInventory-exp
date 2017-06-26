@@ -27,6 +27,7 @@ export class StockPage {
   private hideFilter: boolean = true;
   private hideHSN: boolean = true;
   private productList: any = [];
+  private companyActiveChannels: any = [];
   private priceListLoading: boolean = false;
   private defaultFilters = {
     limit: 20,
@@ -35,7 +36,7 @@ export class StockPage {
   private dummyProducts = [];
 
 /*  private skuSubscribe: any = null;*/
-  private filters = {};
+  private filters = this.skuDetailsAPI.getDefaultFilters();
 
   ionViewDidEnter() {
     console.log('ionViewDidLoad StockPage');
@@ -64,7 +65,7 @@ export class StockPage {
     totalItems: 0
   };
 
-  private pagChanged(page): void{
+  private pageChanged(page): void{
     this.paginationConfig.currentPage = page;
   }
 
@@ -87,6 +88,36 @@ export class StockPage {
   	}
   }
 
+  private statusTab: any = {
+    active: {
+      active : true,
+    },
+    to_ship: {
+      active : false,
+    },
+    low_stock: {
+      active : false,
+    },
+    stock_outs: {
+      active : false,
+    },
+    warehouse: {
+      active : false,
+    },
+    bundles: {
+      active : false,
+    },
+    all: {
+      active : false,
+    },
+    unlisted: {
+      active : false,
+    },
+    archived: {
+      active : false,
+    }
+  }
+
   private toggleDrop(filtertype: string): void{
     this.filterOptions[filtertype].open = !this.filterOptions[filtertype].open;
   }
@@ -103,36 +134,67 @@ export class StockPage {
       modal.present();
   }
 
-  private getSkuList(page: number = 1): any{
-  	this.priceListLoading = true
+  private getSkuList(): any {
+    this.priceListLoading = true
 
     return new Promise((resolve,reject) => {
+      console.log(this.filters);
+
+
       this.skuDetailsAPI.getSKUDetails(this.filters)
         .then((res) => {
           console.log("response", res);
           this.productList = res.data.data;
           resolve(res.data)
+
+          this.companyActiveChannels = res.data;
+          this.skuDetailsAPI.getSKUDetails(this.filters)
+            .then((res) => {
+              console.log("response", res);
+              this.productList = res.data.data;
+              resolve(res.data)
+            })
+            .catch((err) => {
+              console.warn("err", err);
+              reject(err)
+            });
+
         })
         .catch((err) => {
           console.warn("err", err);
+
+          //For localhosts
+          this.companyActiveChannels = this.skuDetailsAPI.getCompanyActiveChannelsDummy();
+          this.companyActiveChannels = this.companyActiveChannels.data;
+
           this.productList = this.skuDetailsAPI.getSKUDetailsDummy();
           this.productList = this.productList.data.data;
+
+          for(let i = 0; i < this.productList.length; i++){
+            if( this.productList[i]['listings'] === undefined ){
+              this.productList[i]['listings'] = {};
+            }
+          }
+          console.log(this.companyActiveChannels);
+          console.log(this.productList);
+
           resolve(err)
         });
     });
+  }
 
-   /* this.skuSubscribe = this.skuDetailsAPI.getSKUDetails(this.filters,'observable')
-      .subscribe((res) => {
-          console.log('skus', res);
+  public changeStockStatusTab(status: string){
 
-        },
-        (err) => {
-          console.warn(err)
-        },
-        () => {
-          this.skuSubscribe.unsubscribe();
-          this.skuSubscribe = null;
-        })*/
+    if(status == 'all') {
+      delete this.filters['type'];
+    } else {
+      this.filters['type'] = status;
+    }
+    for(let status in this.statusTab){
+      this.statusTab[status]['active'] = false;
+    }
+    this.statusTab[status]['active'] = true;
+    this.getSkuList();
   }
 
 }

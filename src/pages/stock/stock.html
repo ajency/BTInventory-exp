@@ -36,14 +36,14 @@
 				<!-- <li class="pri-menu__title"><h2>Import product details from a CSV</h2></li> -->
 				<li class="sku-menu__wrap inventory-tabs show-white">
 					<ul class="sku-menu__full">
-						<li [class.active]="statusTab.active.active"><a (click)="changeStockStatusTab('active')" class="">Active (<span class="text-success">{{ skuCounts.active }}</span>)</a></li>
-						<li [class.active]="statusTab.to_ship.active"><a (click)="changeStockStatusTab('to_ship')" class="">To Ship (<span class="text-warning">{{ skuCounts.to_ship }}</span>)</a></li>
-						<li [class.active]="statusTab.low_stock.active"><a (click)="changeStockStatusTab('low_stock')"  class="">Low Stock (<span class="text-danger">{{ skuCounts.low_stock }}</span>)</a></li>
-						<li [class.active]="statusTab.stock_outs.active"><a (click)="changeStockStatusTab('stock_outs')"  class="">Stock-outs (<span class="text-danger">{{ skuCounts.stock_outs }}</span>)</a></li>
-						<li [class.active]="statusTab.bundles.active"><a (click)="changeStockStatusTab('bundles')"  class="">Bundles ({{ skuCounts.bundles }})</a></li>
-						<li [class.active]="statusTab.allSkus.active"><a (click)="changeStockStatusTab('all')"  class="">All ({{ skuCounts.allSkus | number }})</a></li>
-						<li [class.active]="statusTab.unlisted.active"><a (click)="changeStockStatusTab('unlisted')"  class="">Unlisted (<span class="text-danger">{{ skuCounts.unlisted }}</span>)</a></li>
-						<li [class.active]="statusTab.archived.active"><a (click)="changeStockStatusTab('archived')"  class="">Archived ({{ skuCounts.archived }})</a></li>
+						<li [class.active]="statusTab.active.active"><a (click)="changeStockStatusTab('active')" class="">Active (<span class="text-success">{{ skuCounts.active | number }}</span>)</a></li>
+						<li [class.active]="statusTab.to_ship.active"><a (click)="changeStockStatusTab('to_ship')" class="">To Ship (<span class="text-warning">{{ skuCounts.to_ship | number }}</span>)</a></li>
+						<li [class.active]="statusTab.low_stock.active"><a (click)="changeStockStatusTab('low_stock')"  class="">Low Stock (<span class="text-danger">{{ skuCounts.low_stock | number }}</span>)</a></li>
+						<li [class.active]="statusTab.stock_outs.active"><a (click)="changeStockStatusTab('stock_outs')"  class="">Stock-outs (<span class="text-danger">{{ skuCounts.stock_outs | number }}</span>)</a></li>
+						<li [class.active]="statusTab.bundles.active"><a (click)="changeStockStatusTab('bundles')"  class="">Bundles ({{ skuCounts.bundles | number }})</a></li>
+						<li [class.active]="statusTab.allSkus.active"><a (click)="changeStockStatusTab('allSkus')"  class="">All ({{ skuCounts.allSkus | number }})</a></li>
+						<li [class.active]="statusTab.unlisted.active"><a (click)="changeStockStatusTab('unlisted')"  class="">Unlisted ({{ skuCounts.unlisted | number }})</a></li>
+						<li [class.active]="statusTab.archived.active"><a (click)="changeStockStatusTab('archived')"  class="">Archived ({{ skuCounts.archived | number }})</a></li>
 					</ul>
 				</li>
 				<li class="buttons-right hidden-xs">
@@ -146,7 +146,7 @@
 					</div>
 				</div>
 				<div class="filters__actions">
-					1 - 5 of 1,174
+					{{ pageCounts.startItemNo | number }} - {{ pageCounts.endItemNo | number }} of {{ paginationConfig.totalItems | number }}
 				</div>
 			</div>
 		</div>

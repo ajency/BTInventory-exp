@@ -32,6 +32,7 @@ export class StockPage {
   private hideHSN: boolean = true;
   private productList: any = [];
   private skuCounts: any = {};
+  private pageCounts: any = {};
   private companyActiveChannels: any = [];
   private showListLoading: boolean = false;
   private defaultFilters = {
@@ -161,10 +162,6 @@ export class StockPage {
 
       this.skuDetailsAPI.getCompanyActiveChannels({})
         .then((res) => {
-          console.log("response", res);
-          this.productList = res.data.data;
-          resolve(res.data)
-
           this.companyActiveChannels = res.data;
           this.skuDetailsAPI.getSKUDetails(this.filters)
             .then((res) => {
@@ -175,6 +172,7 @@ export class StockPage {
                   this.productList[i]['listings'] = {};
                 }
               }
+              this.setPageCounts();
               this.showListLoading = false;
               resolve(res.data)
             })
@@ -201,6 +199,7 @@ export class StockPage {
           }
           console.log(this.companyActiveChannels);
           console.log(this.productList);
+          this.setPageCounts();
           this.showListLoading = false;
 
           resolve(err)
@@ -212,13 +211,11 @@ export class StockPage {
   private getSkusCounts(): any {
     return new Promise((resolve,reject) => {
       console.log(this.filters);
-
-
       this.skuDetailsAPI.getSkusCounts({})
         .then((res) => {
           this.skuCounts = res.data;
-          this.skuCounts = this.skuCounts.data;
           this.paginationConfig.totalItems = this.skuCounts.active;
+          this.setPageCounts();
           resolve(res.data)
         })
         .catch((err) => {
@@ -226,6 +223,7 @@ export class StockPage {
           this.skuCounts = this.skuCounts.data;
           this.paginationConfig.totalItems = this.skuCounts.active;
           console.log(this.skuCounts);
+          this.setPageCounts();
           resolve(err)
         });
     });
@@ -242,8 +240,19 @@ export class StockPage {
       this.statusTab[status]['active'] = false;
     }
     this.statusTab[status]['active'] = true;
+    this.paginationConfig.currentPage = 1;
     this.paginationConfig.totalItems = this.skuCounts[status];
     this.getSkuList();
+    this.setPageCounts();
+  }
+
+  public setPageCounts() {
+    console.log(this.paginationConfig);
+    this.pageCounts.startItemNo = ((this.paginationConfig.currentPage - 1) * this.paginationConfig.itemsPerPage) + 1;
+    this.pageCounts.endItemNo = this.paginationConfig.itemsPerPage * this.paginationConfig.currentPage;
+    if(this.pageCounts.endItemNo > this.paginationConfig.totalItems) {
+      this.pageCounts.endItemNo = this.paginationConfig.totalItems;
+    }
   }
 
 }

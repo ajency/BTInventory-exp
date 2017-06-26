@@ -296,7 +296,7 @@
 			</div>
 
 
-      		<div [hidden]="showListLoading == true" class="tabular__row flex" (mouseleave)="itemMouseOut(item)" (mouseover)="itemtMouseOver(item)" [class.open]="item.open" *ngFor="let item of productList | paginate: paginationConfig">
+			<div [hidden]="showListLoading == true" class="tabular__row flex" (mouseleave)="itemMouseOut(item)" (mouseover)="itemtMouseOver(item)" [class.open]="item.open" *ngFor="let item of productList | paginate: paginationConfig">
 
 				<div class="tabular-mob-header">
 					<div class="header-secondary replace-header">
@@ -324,9 +324,9 @@
 						<p *ngIf="item.readable_name"><a target="blank" href="/skus/view/{{item.id}}" class="prod-title">{{ item.readable_name }}e</a></p>
 						<p *ngIf="item.product_family" class="prod-family">Family: <span>{{ item.product_family }}</span></p>
 
-            <p *ngIf="item.bundle_data"><span> Bundle of {{ item.bundle_data.length }} items</span></p>
+						<p *ngIf="item.bundle_data"> Bundle of <span class="bundle-link" (click)="showPopover($event)">{{ item.bundle_data.length }} items</span></p>
 
-            <a (click)="showModal()" class="prod-action">+ Add to a Product Family</a>
+						<a (click)="showModal()" class="prod-action">+ Add to a Product Family</a>
 						<a (click)="showModal()" class="prod-action">+ Map a Listing (add Alias)</a>
 					</div>
 				</div>

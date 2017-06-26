@@ -164,6 +164,18 @@
 	vertical-align: middle;
 }
 
+.sku_code_black{
+	background-color: black;
+	border-radius: 10px;
+	color: #fff;
+	text-align: center;
+	// font-size: 14px;
+	font-weight: bold;
+	display: inline-block;
+	padding: 2px 8px;
+	text-decoration: none;
+}
+
 .dropdown-menu {
 	&>li>a {
 		padding: 8px 20px;

@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, PopoverController } from 'ionic-angular';
 import { Location } from '@angular/common';
 import {EnvVariables} from "../../app/ev/ev.token";
 import { SkuDetailsServiceProvider } from '../../providers/sku-details-service/sku-details-service';
@@ -15,6 +15,7 @@ export class StockPage {
               public navParams: NavParams,
               private location: Location,
               public modalCtrl: ModalController,
+              public popoverCtrl: PopoverController,
               @Inject(EnvVariables) public envVariables,
               public skuDetailsAPI: SkuDetailsServiceProvider
   ) {
@@ -142,6 +143,13 @@ export class StockPage {
   showModal() {
       const modal = this.modalCtrl.create('ModalPage');
       modal.present();
+  }
+
+  showPopover(event) {
+      let popover = this.popoverCtrl.create('PopoverPage');
+      popover.present({
+      	ev:event
+      });
   }
 
   private getSkuList(): any {

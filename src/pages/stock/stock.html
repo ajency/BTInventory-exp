@@ -146,7 +146,7 @@
 					</div>
 				</div>
 				<div class="filters__actions">
-					{{ ((paginationConfig.currentPage - 1) * paginationConfig.itemsPerPage) + 1 | number }} - {{ (paginationConfig.itemsPerPage * paginationConfig.currentPage) | number }} of {{ paginationConfig.totalItems | number }}
+					{{ pageCounts.startItemNo | number }} - {{ pageCounts.endItemNo | number }} of {{ paginationConfig.totalItems | number }}
 				</div>
 			</div>
 		</div>

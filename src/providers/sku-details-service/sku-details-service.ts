@@ -28,6 +28,8 @@ export class SkuDetailsServiceProvider {
 
   private companyActiveChannelsDummy = {"status":"success","message":"channels fetched successfully","data":[{"Channel":{"id":"18236","title":"Vilara","username":"furjaden2015@gmail.com","is_active":"1"},"ChannelType":{"favicon_path":"\/img\/icons\/icon_vilara.png","id":"41"}},{"Channel":{"id":"17042","title":"Styletag","username":null,"is_active":"1"},"ChannelType":{"favicon_path":"\/img\/icons\/icon_offline_store.png","id":"16"}},{"Channel":{"id":"16980","title":"Tata Cliq","username":null,"is_active":"1"},"ChannelType":{"favicon_path":"\/img\/icons\/icon_offline_store.png","id":"16"}},{"Channel":{"id":"14947","title":"Rediff Shopping","username":"furjaden2015@gmail.com","is_active":"1"},"ChannelType":{"favicon_path":"\/img\/icons\/icon_rediff.png","id":"12"}},{"Channel":{"id":"13056","title":"Myntra","username":"furjaden2016@gmail.com","is_active":"1"},"ChannelType":{"favicon_path":"\/img\/icons\/icon_myntra.png","id":"26"}},{"Channel":{"id":"12957","title":"Jabong","username":"furjaden2015@gmail.com","is_active":"1"},"ChannelType":{"favicon_path":"\/img\/icons\/icon_jabong.png","id":"23"}},{"Channel":{"id":"12641","title":"Limeroad","username":"lr_furjaden","is_active":"1"},"ChannelType":{"favicon_path":"\/img\/icons\/icon_limeroad.png","id":"29"}},{"Channel":{"id":"12212","title":"Paytm","username":"furjaden2015@gmail.com","is_active":"1"},"ChannelType":{"favicon_path":"\/img\/icons\/icon_paytm.png","id":"21"}},{"Channel":{"id":"11795","title":"Snapdeal.com","username":"furjaden2015@gmail.com","is_active":"1"},"ChannelType":{"favicon_path":"\/img\/icons\/icon_snapdeal.png","id":"14"}},{"Channel":{"id":"11570","title":"Amazon India","username":"furjaden2015@gmail.com","is_active":"1"},"ChannelType":{"favicon_path":"\/img\/icons\/icon_favamazon.png","id":"7"}},{"Channel":{"id":"11557","title":"Flipkart","username":"furjaden2015@gmail.com","is_active":"1"},"ChannelType":{"favicon_path":"\/img\/icons\/icon_flipkart.png","id":"17"}},{"Channel":{"id":"11556","title":"ShopClues","username":"furjaden2015@gmail.com","is_active":"1"},"ChannelType":{"favicon_path":"\/img\/icons\/icon_favshopclues.png","id":"8"}}]};
 
+  private skusCountsDummy = {"status":"success","message":"Sku counts successfully fetched","data":{"active":"254","in_stock":"44","to_ship":"10","oversold":"10","low_stock":"6","stock_outs":"202","archived":"0","bundles":"2","allSkus":"254","unlisted":76}};
+
   private defaultHeaders = {};
 
   private filters: Filters<any>;
@@ -62,14 +64,24 @@ export class SkuDetailsServiceProvider {
     return this.companyActiveChannelsDummy;
   }
 
+  getSkusCountsDummy() {
+    return this.skusCountsDummy;
+  }
+
   public getSKUDetails(filters: {}, type: string = 'promise'): any{
      this.filters = filters;
+     console.log(this.filters);
      let url = 'http://btapp2.ajency.in/skus/getSkuDetails';
      return this.appservice.request(url,'get',this.filters, this.defaultHeaders, false, type);
   }
 
   public getCompanyActiveChannels(filters: {}, type: string = 'promise'): any{
     let url = 'http:///btapp2.ajency.in/channels/getActiveChannelsForCompany';
+    return this.appservice.request(url,'get', filters, this.defaultHeaders, false, type);
+  }
+
+  public getSkusCounts(filters: {}, type: string = 'promise'): any{
+    let url = 'http:///btapp2.ajency.in/skus/getSkusCount?type=allSkus,active,to_ship,oversold,low_stock,stock_outs,unlisted,archived,bundles';
     return this.appservice.request(url,'get', filters, this.defaultHeaders, false, type);
   }
 }

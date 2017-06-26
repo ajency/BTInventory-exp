@@ -18,6 +18,9 @@ export class StockPage {
               @Inject(EnvVariables) public envVariables,
               public skuDetailsAPI: SkuDetailsServiceProvider
   ) {
+
+    this.getSkusCounts();
+    console.log(this.skuCounts);
   	for(let x = 0; x < this.defaultFilters.limit; x++){
   	  this.dummyProducts.push({});
   	}
@@ -27,6 +30,7 @@ export class StockPage {
   private hideFilter: boolean = true;
   private hideHSN: boolean = true;
   private productList: any = [];
+  private skuCounts: any = {};
   private companyActiveChannels: any = [];
   private showListLoading: boolean = false;
   private defaultFilters = {
@@ -62,13 +66,13 @@ export class StockPage {
   private paginationConfig: any = {
     itemsPerPage: this.filters.limit,
     currentPage: this.filters.page,
-    totalItems: 10
+    totalItems: this.filters.limit,
   };
 
   private pageChanged(page): void{
     this.paginationConfig.currentPage = page;
     this.filters.page = page;
-    console.log(this.filters);
+    this.getSkuList();
   }
 
   private filterOptions: any = {
@@ -109,7 +113,7 @@ export class StockPage {
     bundles: {
       active : false,
     },
-    all: {
+    allSkus: {
       active : false,
     },
     unlisted: {
@@ -192,9 +196,32 @@ export class StockPage {
     });
   }
 
+
+  private getSkusCounts(): any {
+    return new Promise((resolve,reject) => {
+      console.log(this.filters);
+
+
+      this.skuDetailsAPI.getSkusCounts({})
+        .then((res) => {
+          this.skuCounts = res.data;
+          this.skuCounts = this.skuCounts.data;
+          this.paginationConfig.totalItems = this.skuCounts.active;
+          resolve(res.data)
+        })
+        .catch((err) => {
+          this.skuCounts = this.skuDetailsAPI.getSkusCountsDummy();
+          this.skuCounts = this.skuCounts.data;
+          this.paginationConfig.totalItems = this.skuCounts.active;
+          console.log(this.skuCounts);
+          resolve(err)
+        });
+    });
+  }
+
   public changeStockStatusTab(status: string){
     this.showListLoading = true;
-    if(status == 'all') {
+    if(status == 'allSkus') {
       delete this.filters['type'];
     } else {
       this.filters['type'] = status;
@@ -203,6 +230,7 @@ export class StockPage {
       this.statusTab[status]['active'] = false;
     }
     this.statusTab[status]['active'] = true;
+    this.paginationConfig.totalItems = this.skuCounts[status];
     this.getSkuList();
   }
 

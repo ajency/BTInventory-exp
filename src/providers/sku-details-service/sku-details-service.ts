@@ -70,6 +70,6 @@ export class SkuDetailsServiceProvider {
 
   public getCompanyActiveChannels(filters: {}, type: string = 'promise'): any{
     let url = 'http:///btapp2.ajency.in/channels/getActiveChannelsForCompany';
-    return this.appservice.request(url,'get',this.filters, this.defaultHeaders, false, type);
+    return this.appservice.request(url,'get', filters, this.defaultHeaders, false, type);
   }
 }

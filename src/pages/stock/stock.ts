@@ -28,7 +28,7 @@ export class StockPage {
   private hideHSN: boolean = true;
   private productList: any = [];
   private companyActiveChannels: any = [];
-  private priceListLoading: boolean = false;
+  private showListLoading: boolean = false;
   private defaultFilters = {
     limit: 20,
     page: 1
@@ -62,11 +62,13 @@ export class StockPage {
   private paginationConfig: any = {
     itemsPerPage: 5,
     currentPage: 1,
-    totalItems: 0
+    totalItems: 10
   };
 
   private pageChanged(page): void{
+    this.showListLoading = true;
     this.paginationConfig.currentPage = page;
+    this.showListLoading = false;
   }
 
   private filterOptions: any = {
@@ -135,13 +137,13 @@ export class StockPage {
   }
 
   private getSkuList(): any {
-    this.priceListLoading = true
+    this.showListLoading = true;
 
     return new Promise((resolve,reject) => {
       console.log(this.filters);
 
 
-      this.skuDetailsAPI.getSKUDetails(this.filters)
+      this.skuDetailsAPI.getCompanyActiveChannels({})
         .then((res) => {
           console.log("response", res);
           this.productList = res.data.data;
@@ -152,6 +154,12 @@ export class StockPage {
             .then((res) => {
               console.log("response", res);
               this.productList = res.data.data;
+              for(let i = 0; i < this.productList.length; i++){
+                if( this.productList[i]['listings'] === undefined ){
+                  this.productList[i]['listings'] = {};
+                }
+              }
+              this.showListLoading = false;
               resolve(res.data)
             })
             .catch((err) => {
@@ -177,6 +185,7 @@ export class StockPage {
           }
           console.log(this.companyActiveChannels);
           console.log(this.productList);
+          this.showListLoading = false;
 
           resolve(err)
         });
@@ -184,7 +193,7 @@ export class StockPage {
   }
 
   public changeStockStatusTab(status: string){
-
+    this.showListLoading = true;
     if(status == 'all') {
       delete this.filters['type'];
     } else {

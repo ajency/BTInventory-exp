@@ -300,10 +300,11 @@
 						<strong class="mobile-title">Alias(es)</strong>
 					</div>
 					<ul class="sku-code">
-						<li *ngFor="let alias of item.sku_aliases">
-                			<!-- <ion-badge color="default" text-uppercase>{{ alias[1] }}</ion-badge> --> {{ alias[0] }}
-						</li>
-					</ul>
+            <li *ngFor="let alias of (item.sku_aliases ? item.sku_aliases.slice(0,5): [])">
+              <span *ngIf="item.sku_code != alias[0]">
+                      <ion-badge [ngClass]="{'hidden' : alias[1] == 'default'}" color="default" text-uppercase>{{ alias[1] }}</ion-badge> {{ alias[0] }}
+              </span>
+          </ul>
 				</div>
 				<div class="tabular__cell cell-5 t-sellable">
 					<div class="visible-xs">
@@ -338,10 +339,21 @@
 						<strong class="mobile-title">Channels</strong>
 					</div>
 					<ul>
-			            <li *ngFor="let channel of item.channels" class="tooltip">
-			            	<a href="{{ item.listings.url_on_channel }}">
-			                	<img src="{{ envVariables.assetsFolder }}{{ channel.favicon_path }}" [ngClass]="(channel.status_on_channel==0)?'disabled':(channel.quantity_on_channel <= 0) ? 'channelFaviconImageRed':'channelFaviconImageGreen'">
-			                	<div class="tooltiptext " [ngClass]="(channel.status_on_channel==0)?'hidden':(channel.quantity_on_channel <= 0)? 'not-active':'active'">
+
+
+
+            <!--<li *ngFor="let channel of companyActiveChannels">
+              <img *ngIf="!item.listings[channel.Channel.id]" [ngClass]="{'disabled': !item.listings[channel.Channel.id] }" src="{{channel.ChannelType.favicon_path != null ? envVariables.assetsFolder  + channel.ChannelType.favicon_path : envVariables.assetsFolder  + '/img/icons/icon_offline_store.png'}}" alt="" class="channelFaviconImageRed">
+              <a target="_blank" *ngIf="item.listings[channel.Channel.id]" href="{{item.listings[channel.Channel.id].url_on_channel}}">
+                <img src="{{ envVariables.assetsFolder }}{{ channel.ChannelType.favicon_path }}" [ngClass]="(item.listings[channel.Channel.id].quantity_on_channel <= 0) ? 'channelFaviconImageRed':'channelFaviconImageGreen'">
+              </a>
+            </li>-->
+
+            <li *ngFor="let channel of companyActiveChannels" class="tooltip">
+                <img *ngIf="!item.listings[channel.Channel.id]" [ngClass]="{'disabled': !item.listings[channel.Channel.id] }" src="{{channel.ChannelType.favicon_path != null ? envVariables.assetsFolder  + channel.ChannelType.favicon_path : envVariables.assetsFolder  + '/img/icons/icon_offline_store.png'}}" alt="" class="channelFaviconImageRed">
+              <a target="_blank" *ngIf="item.listings[channel.Channel.id]" href="{{item.listings[channel.Channel.id].url_on_channel}}">
+                <img src="{{ envVariables.assetsFolder }}{{ channel.ChannelType.favicon_path }}" [ngClass]="(item.listings[channel.Channel.id].quantity_on_channel <= 0) ? 'channelFaviconImageRed':'channelFaviconImageGreen'">
+			                	<div class="tooltiptext " [ngClass]="(item.listings[channel.Channel.id].quantity_on_channel <= 0) ? 'not-active':'active'">
 			                		{{ channel.channel_title }} ({{ channel.username }})<br>
 			                		Status: <strong></strong><br>
 			                		Price: <strong>{{ channel.price_on_channel }}</strong><br>

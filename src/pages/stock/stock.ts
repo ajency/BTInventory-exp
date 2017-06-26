@@ -153,10 +153,6 @@ export class StockPage {
 
       this.skuDetailsAPI.getCompanyActiveChannels({})
         .then((res) => {
-          console.log("response", res);
-          this.productList = res.data.data;
-          resolve(res.data)
-
           this.companyActiveChannels = res.data;
           this.skuDetailsAPI.getSKUDetails(this.filters)
             .then((res) => {
@@ -209,7 +205,6 @@ export class StockPage {
       this.skuDetailsAPI.getSkusCounts({})
         .then((res) => {
           this.skuCounts = res.data;
-          this.skuCounts = this.skuCounts.data;
           this.paginationConfig.totalItems = this.skuCounts.active;
           resolve(res.data)
         })

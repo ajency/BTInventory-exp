@@ -39,7 +39,7 @@ export class SkuDetailsServiceProvider {
     this.filters["abvQty"] = '';
     this.filters["blwPrice"] = '';
     this.filters["blwQty"] = '';
-    this.filters["limit"] = 10;
+    this.filters["limit"] = 5;
     this.filters["page"] = 1;
     this.filters["pfFilter"] = '';
     this.filters["sku"] = '';

@@ -279,7 +279,7 @@
 				</div>
 				<div class="tabular__cell cell-9 flex t-product">
 					<div class="img-wrap" margin-right style="background-image: url({{ item.image_path }});">
-						<img src="{{ item.image_path }}" width="110" alt="">
+						<img src="{{ item.image_path === null ?  envVariables.assetsFolder + 'img/img-placeholder.png' : item.image_path }}" width="110" alt="">
 					</div>
 					<div class="text-wrap">
 						<span class="">

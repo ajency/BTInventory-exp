@@ -1,0 +1,60 @@
+// ---------------------------
+// CUSTOM TOOLTIP -----------
+// ---------------------------
+
+
+/* Tooltip container */
+.tooltip {
+	position: relative;
+
+	/* Tooltip text */
+	.tooltiptext {
+		visibility: hidden;
+		opacity: 0;
+		min-width: 120px;
+		color: #fff;
+		// text-align: center;
+		padding: 5px 10px;
+		border-radius: 2px;
+		font-size: 13px;
+		line-height: 18px;
+
+		/* Position the tooltip text */
+		position: absolute;
+		z-index: 1;
+		left: -150%;
+		top: 110%;
+		transition: all 0.3s ease;
+
+		&:before {
+			margin-left: 35px;
+			width: 0;
+			// border-bottom: 5px solid #000;
+			border-right: 5px solid transparent;
+			border-left: 5px solid transparent;
+			content: " ";
+			font-size: 0;
+			position: absolute;
+			top: -5px;
+		}
+		&.active{
+			background-color: darken($alert-green, 10%);
+			&:before{
+				border-bottom: 5px solid darken($alert-green, 10%);
+			}
+		}
+		&.not-active{
+			background-color: darken($alert-red, 10%);
+			&:before{
+				border-bottom: 5px solid darken($alert-red, 10%);
+			}
+		}
+	}
+
+	/* Show the tooltip text when you mouse over the tooltip container */
+	&:hover .tooltiptext {
+		visibility: visible;
+		opacity: 1;
+	}
+}
+

@@ -259,7 +259,7 @@ page-stock {
 			flex-wrap: wrap;
 		}
 		li{
-			padding: 1% 2%;
+			padding: 3px 5px;
 		}
 		a{
 			opacity: 1;
@@ -273,6 +273,7 @@ page-stock {
 			padding-bottom: 3px;
 			max-width: 100%;
 			height: auto;
+			display: block;
 		}
 		.channelFaviconImageRed{
 			border-bottom: 2px solid $bt-red;

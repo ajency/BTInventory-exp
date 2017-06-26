@@ -91,6 +91,10 @@ export class StockPage {
   	add: {
   	},
   	bulk: {
+  	},
+  	upload: {
+  	},
+  	download: {
   	}
   }
 

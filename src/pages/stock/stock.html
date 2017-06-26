@@ -282,10 +282,10 @@
 						<img src="{{ item.image_path }}" width="110" alt="">
 					</div>
 					<div class="text-wrap">
-            <span class="sku">
-              <span *ngIf="item.is_bundle==1" class="custom_code_yellow">B</span>
-              <a [ngClass]="{'bundle_sku' : item.is_bundle==1,'custom_code_black' : item.is_bundle==0}" href="/skus/view/{{item.id}}">{{item.sku_code}}</a>
-            </span>
+			            <span class="">
+			              <span *ngIf="item.is_bundle==1" class="custom_code_yellow">B</span>
+			              <a [ngClass]="{'bundle_sku' : item.is_bundle==1,'custom_code_black' : item.is_bundle==0}" href="/skus/view/{{item.id}}">{{item.sku_code}}</a>
+			            </span>
 						<img *ngIf="item.is_disabled===0" src="{{ envVariables.assetsFolder }}img/Active.png" class="status-dot">
 						<p><a target="blank" href="#" class="prod-title">{{ item.readable_name }}e</a></p>
 						<p class="prod-family">Family: <span>{{ item.product_family }}</span></p>
@@ -303,11 +303,12 @@
 						<strong class="mobile-title">Alias(es)</strong>
 					</div>
 					<ul class="sku-code">
-            <li *ngFor="let alias of (item.sku_aliases ? item.sku_aliases.slice(0,5): [])">
-              <span *ngIf="item.sku_code != alias[0]">
-                      <ion-badge [ngClass]="{'hidden' : alias[1] == 'default'}" color="default" text-uppercase>{{ alias[1] }}</ion-badge> {{ alias[0] }}
-              </span>
-          </ul>
+			            <li *ngFor="let alias of (item.sku_aliases ? item.sku_aliases.slice(0,5): [])">
+			              	<span *ngIf="item.sku_code != alias[0]">
+			                	<ion-badge [ngClass]="{'hidden' : alias[1] == 'default'}" color="default" text-uppercase>{{ alias[1] }}</ion-badge> {{ alias[0] }}
+			             	</span>
+			            </li>
+			        </ul>
 				</div>
 				<div class="tabular__cell cell-5 t-sellable">
 					<div class="visible-xs">

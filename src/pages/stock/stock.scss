@@ -56,6 +56,13 @@ page-stock {
 		.t-price {
 			// padding-left: 20px;
 		}
+		.tabular {
+			&__row{
+				&.open{
+					background-color: $alert-yellow;
+				}
+			}
+		}
 	}
 	@media screen and (max-width: 767px) {
 		.content-md {
@@ -150,34 +157,34 @@ page-stock {
 						width: auto;
 					}
 				}
-			}
-			.open .tabular-mob-header {
-				position: fixed;
-				left: 0;
-				top: 0;
-				right: 0;
-				height: 47px;
-				padding: 0 15px;
-			}
-			.open .t-product {
-				padding: 0 15px;
-				height: auto;
-			}
-			.open .t-price {
-				width: 63%;
-				height: auto;
-				padding-right: 15px;
-			}
-			.open .t-seller {
-			}
-			.open .t-rule {}
-			.open .t-listing {
-				width: 20%;
-				padding-left: 15px;
-			}
-			.open .t-battler {
-				display: block;
-				padding: 15px;
+				.tabular-mob-header {
+					position: fixed;
+					left: 0;
+					top: 0;
+					right: 0;
+					height: 47px;
+					padding: 0 15px;
+				}
+				.t-product {
+					padding: 0 15px;
+					height: auto;
+				}
+				.t-price {
+					width: 63%;
+					height: auto;
+					padding-right: 15px;
+				}
+				.t-seller {
+				}
+				.t-rule {}
+				.t-listing {
+					width: 20%;
+					padding-left: 15px;
+				}
+				.t-battler {
+					display: block;
+					padding: 15px;
+				}
 			}
 		}
 		.mobile-title{
@@ -200,6 +207,42 @@ page-stock {
 			color: white;
 			text-decoration: none;
 		}
+	}
+
+	.custom_code_black{
+		background-color: black;
+		border-radius: 10px;
+		color: #fff;
+		text-align: center;
+		// font-size: 14px;
+		font-weight: bold;
+		display: inline-block;
+		padding: 4px 10px;
+		text-decoration: none;
+	}
+
+	.bundle_sku {
+	    border-radius: 0px 10px 10px 0px;
+	    background-color: black;
+	    color: #fff;
+	    text-align: center;
+	    // font-size: 14px;
+	    font-weight: bold;
+	    display: inline-block;
+	    padding: 4px 10px;
+		text-decoration: none;
+	}
+
+	.custom_code_yellow {
+	    z-index: 10;
+	    background-color: darken($star-yellow, 5%);
+	    border-radius: 10px 0px 0px 10px;
+	    color: #fff;
+	    text-align: center;
+	    // font-size: 14px;
+	    font-weight: bold;
+	    display: inline-block;
+	    padding: 4px 8px;
 	}
 
 	.prod-title{

@@ -230,7 +230,7 @@
 			</div>
 
 			<!-- .... the loader .... -->
-			<div class="tabular__row flex has-anim-loader" [hidden]="productList.length || priceListLoading == false" *ngFor="let dummy of dummyProducts">
+			<div class="tabular__row flex has-anim-loader" [hidden]="showListLoading == false" *ngFor="let dummy of dummyProducts">
 				<div class="masked masked--prices">
 					<div class="masked__bg">
 						<div class="masked__elements">
@@ -257,12 +257,12 @@
 
 			<!-- .... add class "violated" to this tabular__row if there's a violation here .... -->
 			<!-- .... add class "open" when tapped or clicked .... -->
-			<div class="tabular__row flex" *ngIf="!priceListLoading && !productList.length"  style="justify-content: center;">
+			<div class="tabular__row flex" *ngIf="!showListLoading && !productList.length"  style="justify-content: center;">
 				<strong>No records found</strong>
 			</div>
 
 
-      		<div class="tabular__row flex" (mouseleave)="itemMouseOut(item)" (mouseover)="itemtMouseOver(item)" [class.open]="item.open" *ngFor="let item of productList | paginate: paginationConfig">
+      		<div [hidden]="showListLoading == true" class="tabular__row flex" (mouseleave)="itemMouseOut(item)" (mouseover)="itemtMouseOver(item)" [class.open]="item.open" *ngFor="let item of productList | paginate: paginationConfig">
 
 				<div class="tabular-mob-header">
 					<div class="header-secondary replace-header">

@@ -41,7 +41,7 @@
 						<li [class.active]="statusTab.low_stock.active"><a (click)="changeStockStatusTab('low_stock')"  class="">Low Stock ({{ skuCounts.low_stock }})</a></li>
 						<li [class.active]="statusTab.stock_outs.active"><a (click)="changeStockStatusTab('stock_outs')"  class="">Stock-outs ({{ skuCounts.stock_outs }})</a></li>
 						<li [class.active]="statusTab.bundles.active"><a (click)="changeStockStatusTab('bundles')"  class="">Bundles ({{ skuCounts.bundles }})</a></li>
-						<li [class.active]="statusTab.allSkus.active"><a (click)="changeStockStatusTab('all')"  class="">All ({{ skuCounts.allSkus | number }})</a></li>
+						<li [class.active]="statusTab.allSkus.active"><a (click)="changeStockStatusTab('allSkus')"  class="">All ({{ skuCounts.allSkus | number }})</a></li>
 						<li [class.active]="statusTab.unlisted.active"><a (click)="changeStockStatusTab('unlisted')"  class="">Unlisted ({{ skuCounts.unlisted }})</a></li>
 						<li [class.active]="statusTab.archived.active"><a (click)="changeStockStatusTab('archived')"  class="">Archived ({{ skuCounts.archived }})</a></li>
 					</ul>

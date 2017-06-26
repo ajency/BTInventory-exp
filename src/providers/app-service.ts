@@ -41,7 +41,10 @@ export class AppService {
     let httpEvent;
     if(type === 'get'){
       //TBD construct query params
-      url = url + '?' + this.encodeQueryData(body);
+      let params = this.encodeQueryData(body);
+      if (params.length > 0) {
+        url = url + '?' + params;
+      }
       console.log("url" + url);
       httpEvent = this.http.get(url,{headers: headers})
     }

@@ -6,6 +6,7 @@
 /* Tooltip container */
 .tooltip {
 	position: relative;
+	display: inline-block;
 
 	/* Tooltip text */
 	.tooltiptext {
@@ -22,7 +23,7 @@
 		/* Position the tooltip text */
 		position: absolute;
 		z-index: 1;
-		left: -150%;
+		left: -40px;
 		top: 110%;
 		transition: all 0.3s ease;
 
@@ -43,10 +44,16 @@
 				border-bottom: 5px solid darken($alert-green, 10%);
 			}
 		}
-		&.not-active{
+		&.not-active, &.danger{
 			background-color: darken($alert-red, 10%);
 			&:before{
 				border-bottom: 5px solid darken($alert-red, 10%);
+			}
+		}
+		&.warning{
+			background-color: $star-yellow;
+			&:before{
+				border-bottom: 5px solid $star-yellow;
 			}
 		}
 	}

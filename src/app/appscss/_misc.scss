@@ -219,6 +219,9 @@ ion-loading ion-backdrop {
 .text-warning{
 	color: $star-yellow;
 }
+.text-danger{
+	color: $alert-red;
+}
 .text-grey{
 	color: darken($bt-grey, 50%);
 }

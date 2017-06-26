@@ -37,7 +37,7 @@
 }
 
 .big {
-	font-size: 120%;
+	font-size: 150%;
 }
 
 .badge-md-light {
@@ -179,10 +179,6 @@
 }
 
 
-
-
-
-
 .scroll-content {
 	overflow: auto;
 }
@@ -216,10 +212,10 @@ ion-loading ion-backdrop {
 .text-success{
 	color: $bt-green;
 }
-.text-warning{
+.text-warning, .yellow-count{
 	color: $star-yellow;
 }
-.text-danger{
+.text-danger, .red-count{
 	color: $alert-red;
 }
 .text-grey{

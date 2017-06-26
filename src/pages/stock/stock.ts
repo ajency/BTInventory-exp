@@ -18,15 +18,19 @@ export class StockPage {
               @Inject(EnvVariables) public envVariables,
               public skuDetailsAPI: SkuDetailsServiceProvider
   ) {
-  	for(let x = 0; x < this.defaultFilters.limit; x++){
+
+    for(let x = 0; x < this.defaultFilters.limit; x++){
   	  this.dummyProducts.push({});
   	}
+
+
   }
 
   private priceSlider: any = { lower: 1050, upper: 2000 };
   private hideFilter: boolean = true;
   private hideHSN: boolean = true;
   private productList: any = [];
+  private companyActiveChannels: any = [];
   private priceListLoading: boolean = false;
   private defaultFilters = {
     limit: 20,
@@ -38,7 +42,6 @@ export class StockPage {
   private filters = this.skuDetailsAPI.getDefaultFilters();
 
   ionViewDidEnter() {
-    console.log('ionViewDidLoad StockPage');
     this.getSkuList();
   }
 
@@ -133,23 +136,71 @@ export class StockPage {
       modal.present();
   }
 
-  private getSkuList(): any{
-  	this.priceListLoading = true
-
-    return new Promise((resolve,reject) => {
+  private getCompanyActiveChannels(): any{
+ /*   this.companyActiveChannels = this.skuDetailsAPI.getCompanyActiveChannelsDummy();
+    this.companyActiveChannels = this.companyActiveChannels.data.data;*/
+/*    return new Promise((resolve,reject) => {
       console.log(this.filters);
-      this.skuDetailsAPI.getSKUDetails(this.filters)
+      this.skuDetailsAPI.getCompanyActiveChannels(this.filters)
         .then((res) => {
           console.log("response", res);
-          this.productList = res.data.data;
+          this.companyActiveChannels = res.data.data;
           resolve(res.data)
         })
         .catch((err) => {
           console.warn("err", err);
-          this.productList = this.skuDetailsAPI.getSKUDetailsDummy();
-          this.productList = this.productList.data.data;
+          this.companyActiveChannels = this.skuDetailsAPI.getCompanyActiveChannelsDummy();
+          this.companyActiveChannels = this.companyActiveChannels.data.data;
           resolve(err)
         });
+    });*/
+  }
+
+  private getSkuList(): any{
+    this.priceListLoading = true
+
+    return new Promise((resolve,reject) => {
+      console.log(this.filters);
+
+
+      this.skuDetailsAPI.getSKUDetails(this.filters)
+        .then((res) => {
+
+          this.companyActiveChannels = res.data;
+          this.skuDetailsAPI.getSKUDetails(this.filters)
+            .then((res) => {
+              console.log("response", res);
+              this.productList = res.data.data;
+              resolve(res.data)
+            })
+            .catch((err) => {
+              console.warn("err", err);
+              reject(err)
+            });
+
+        })
+        .catch((err) => {
+          console.warn("err", err);
+
+          //For localhosts
+          this.companyActiveChannels = this.skuDetailsAPI.getCompanyActiveChannelsDummy();
+          this.companyActiveChannels = this.companyActiveChannels.data;
+
+          this.productList = this.skuDetailsAPI.getSKUDetailsDummy();
+          this.productList = this.productList.data.data;
+
+          for(let i = 0; i < this.productList.length; i++){
+            if( this.productList[i]['listings'] === undefined ){
+              this.productList[i]['listings'] = {};
+            }
+          }
+          console.log(this.companyActiveChannels);
+          console.log(this.productList);
+
+          resolve(err)
+        });
+
+
     });
 
    /* this.skuSubscribe = this.skuDetailsAPI.getSKUDetails(this.filters,'observable')

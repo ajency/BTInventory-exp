@@ -60,15 +60,15 @@ export class StockPage {
   }
 
   private paginationConfig: any = {
-    itemsPerPage: 5,
-    currentPage: 1,
+    itemsPerPage: this.filters.limit,
+    currentPage: this.filters.page,
     totalItems: 10
   };
 
   private pageChanged(page): void{
-    this.showListLoading = true;
     this.paginationConfig.currentPage = page;
-    this.showListLoading = false;
+    this.filters.page = page;
+    console.log(this.filters);
   }
 
   private filterOptions: any = {

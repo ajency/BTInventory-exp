@@ -36,13 +36,13 @@
 				<!-- <li class="pri-menu__title"><h2>Import product details from a CSV</h2></li> -->
 				<li class="sku-menu__wrap inventory-tabs show-white">
 					<ul class="sku-menu__full">
-						<li [class.active]="statusTab.active.active"><a (click)="changeStockStatusTab('active')" class="">Active (1,066)</a></li>
-						<li [class.active]="statusTab.to_ship.active"><a (click)="changeStockStatusTab('to_ship')" class="">To Ship (250)</a></li>
-						<li [class.active]="statusTab.low_stock.active"><a (click)="changeStockStatusTab('low_stock')"  class="">Low Stock (15)</a></li>
-						<li [class.active]="statusTab.stock_outs.active"><a (click)="changeStockStatusTab('stock_outs')"  class="">Stock-outs (783)</a></li>
+						<li [class.active]="statusTab.active.active"><a (click)="changeStockStatusTab('active')" class="">Active (<span class="text-success">1,066</span>)</a></li>
+						<li [class.active]="statusTab.to_ship.active"><a (click)="changeStockStatusTab('to_ship')" class="">To Ship (<span class="text-warning">250</span>)</a></li>
+						<li [class.active]="statusTab.low_stock.active"><a (click)="changeStockStatusTab('low_stock')"  class="">Low Stock (<span class="text-danger">15</span>)</a></li>
+						<li [class.active]="statusTab.stock_outs.active"><a (click)="changeStockStatusTab('stock_outs')"  class="">Stock-outs (<span class="text-danger">783</span>)</a></li>
 						<li [class.active]="statusTab.bundles.active"><a (click)="changeStockStatusTab('bundles')"  class="">Bundles (0)</a></li>
 						<li [class.active]="statusTab.all.active"><a (click)="changeStockStatusTab('all')"  class="">All (1,066)</a></li>
-						<li [class.active]="statusTab.unlisted.active"><a (click)="changeStockStatusTab('unlisted')"  class="">Unlisted (5)</a></li>
+						<li [class.active]="statusTab.unlisted.active"><a (click)="changeStockStatusTab('unlisted')"  class="">Unlisted (<span class="text-danger">5</span>)</a></li>
 						<li [class.active]="statusTab.archived.active"><a (click)="changeStockStatusTab('archived')"  class="">Archived (0)</a></li>
 					</ul>
 				</li>
@@ -54,65 +54,99 @@
 			</ul>
 		</div>
 
-		<div class="filters flex top">
-			<div class="filters__multi">
-				<ion-checkbox color="dark" no-padding></ion-checkbox>
-				<span class="visible-xs-inline-block">Select All</span>
-			</div>
-
-			<button (click)="toggleFilterDisplay()" ion-button small clear no-margin class="filters__toggle">
-				<ion-icon name="funnel" color="primary"></ion-icon>
-				<span class="visible-xs-inline-block">Filters</span>
-			</button>
-
-			<div class="filters__btn-wrapper">
-				<div class="bt-dropdown" [class.open]="filterOptions.selected.open">
-					<!-- .... On click of this button, add class "open" to the parent div "bt-dropdown" .... -->
-					<!-- .... just adding the class will show the dropdown .... -->
-					<button (click)="toggleDrop('selected')" ion-button color="secondary" small outline no-margin class="bt-dropdown__btn button-drop">
-						<span class="plusicon visible-xs-inline-block"></span> For Selected <ion-icon name="ios-arrow-down" class="hidden-xs icon-small"></ion-icon>
-					</button>
-					<div class="bt-dropdown__dd">
-						<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Reset stock to..</button>
-						<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Assign a Product Family</button>
-						<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Add to basket</button>
-						<div class="separator-h"></div>
-						<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Archive SKUs</button>
-						<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Unarchive SKUs</button>
-						<div class="separator-h"></div>
-						<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Delete SKUs</button>
-					</div>
+		<div class="filters flex top space-between">
+			<div class="filters__left flex">
+				<div class="filters__multi">
+					<ion-checkbox color="dark" no-padding></ion-checkbox>
+					<span class="visible-xs-inline-block">Select All</span>
 				</div>
 
-				<div class="filters__actions">
-					<div class="bt-dropdown" [class.open]="filterOptions.add.open">
+				<button (click)="toggleFilterDisplay()" ion-button small clear no-margin class="filters__toggle">
+					<ion-icon name="funnel" color="primary"></ion-icon>
+					<span class="visible-xs-inline-block">Filters</span>
+				</button>
+
+				<div class="filters__btn-wrapper">
+					<div class="bt-dropdown" [class.open]="filterOptions.selected.open">
 						<!-- .... On click of this button, add class "open" to the parent div "bt-dropdown" .... -->
 						<!-- .... just adding the class will show the dropdown .... -->
-						<button (click)="toggleDrop('add')" ion-button color="dark" small outline no-margin class="bt-dropdown__btn button-drop">
-							<span class="plusicon"></span> Add <ion-icon name="ios-arrow-down" class="hidden-xs icon-small"></ion-icon>
+						<button (click)="toggleDrop('selected')" ion-button color="secondary" small outline no-margin class="bt-dropdown__btn button-drop">
+							<span class="plusicon visible-xs-inline-block"></span> For Selected <ion-icon name="ios-arrow-down" class="hidden-xs icon-small"></ion-icon>
+						</button>
+						<div class="bt-dropdown__dd">
+							<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Reset stock to..</button>
+							<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Assign a Product Family</button>
+							<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Add to basket</button>
+							<div class="separator-h"></div>
+							<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Archive SKUs</button>
+							<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Unarchive SKUs</button>
+							<div class="separator-h"></div>
+							<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Delete SKUs</button>
+						</div>
+					</div>
+
+					<div class="filters__actions">
+						<div class="bt-dropdown" [class.open]="filterOptions.add.open">
+							<!-- .... On click of this button, add class "open" to the parent div "bt-dropdown" .... -->
+							<!-- .... just adding the class will show the dropdown .... -->
+							<button (click)="toggleDrop('add')" ion-button color="dark" small outline no-margin class="bt-dropdown__btn button-drop">
+								<span class="plusicon"></span> Add <ion-icon name="ios-arrow-down" class="hidden-xs icon-small"></ion-icon>
+							</button>
+							<div class="bt-dropdown__dd">
+								<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Add a Product</button>
+								<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Add a Bundle</button>
+							</div>
+						</div>
+						<div class="bt-dropdown" [class.open]="filterOptions.bulk.open">
+							<!-- .... On click of this button, add class "open" to the parent div "bt-dropdown" .... -->
+							<!-- .... just adding the class will show the dropdown .... -->
+							<button (click)="toggleDrop('bulk')" ion-button color="dark" small outline no-margin class="bt-dropdown__btn button-drop">
+								<span class="plusicon"></span> Bulk <ion-icon name="ios-arrow-down" class="hidden-xs icon-small"></ion-icon>
+							</button>
+							<div class="bt-dropdown__dd">
+								<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk Add Products</button>
+								<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk Update Product Info</button>
+								<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk Stock Reset</button>
+								<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk LSP Reset</button>
+								<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk Assign Tax Rule</button>
+								<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk Set Channel Stock</button>
+								<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk Add Bundles</button>
+								<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk Add Sku Aliases</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="filters__right flex vertical-align-center">
+				<div class="filters__actions no-border">
+					<div class="bt-dropdown" [class.open]="filterOptions.upload.open">
+						<!-- .... On click of this button, add class "open" to the parent div "bt-dropdown" .... -->
+						<!-- .... just adding the class will show the dropdown .... -->
+						<button (click)="toggleDrop('upload')" ion-button color="dark" small clear no-margin class="bt-dropdown__btn button-drop">
+							<span class="plusicon"></span> Upload <ion-icon name="ios-arrow-down" class="hidden-xs icon-small"></ion-icon>
 						</button>
 						<div class="bt-dropdown__dd">
 							<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Add a Product</button>
 							<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Add a Bundle</button>
 						</div>
 					</div>
-					<div class="bt-dropdown" [class.open]="filterOptions.bulk.open">
+				</div>
+				<div class="filters__actions">
+					<div class="bt-dropdown" [class.open]="filterOptions.download.open">
 						<!-- .... On click of this button, add class "open" to the parent div "bt-dropdown" .... -->
 						<!-- .... just adding the class will show the dropdown .... -->
-						<button (click)="toggleDrop('bulk')" ion-button color="dark" small outline no-margin class="bt-dropdown__btn button-drop">
-							<span class="plusicon"></span> Bulk <ion-icon name="ios-arrow-down" class="hidden-xs icon-small"></ion-icon>
+						<button (click)="toggleDrop('download')" ion-button color="dark" small clear no-margin class="bt-dropdown__btn button-drop">
+							<span class="plusicon"></span> Download <ion-icon name="ios-arrow-down" class="hidden-xs icon-small"></ion-icon>
 						</button>
 						<div class="bt-dropdown__dd">
-							<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk Add Products</button>
-							<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk Update Product Info</button>
-							<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk Stock Reset</button>
-							<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk LSP Reset</button>
-							<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk Assign Tax Rule</button>
-							<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk Set Channel Stock</button>
-							<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk Add Bundles</button>
-							<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Bulk Add Sku Aliases</button>
+							<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Add a Product</button>
+							<button ion-button color="dark" small clear no-margin block class="bt-dropdown__btn button-drop">Add a Bundle</button>
 						</div>
 					</div>
+				</div>
+				<div class="filters__actions">
+					1 - 5 of 1,174
 				</div>
 			</div>
 		</div>

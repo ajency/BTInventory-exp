@@ -147,8 +147,11 @@ export class StockPage {
       modal.present();
   }
 
-  showPopover(event) {
-      let popover = this.popoverCtrl.create('PopoverPage');
+  showPopover(event, data) {
+      console.log(data);
+      let data1 = [];
+      data1 = data;
+      let popover = this.popoverCtrl.create('PopoverPage', { "data" : data1 });
       popover.present({
       	ev:event
       });

@@ -2,18 +2,98 @@ pagination-controls {
 	padding: 15px;
 	text-align: center;
 	margin-bottom: 35px;
-}
-.ngx-pagination li {
-	padding: 14px !important;
-	a {
-		color: $bt-blue !important;
+
+	.ngx-pagination {
+	  margin-left: 0;
+	  margin-bottom: 1rem;
+	  &::before {
+	    content: ' ';
+	    display: table;
+	  }
+	  &::after {
+	    content: ' ';
+	    display: table;
+	    clear: both;
+	  }
+	  li {
+	    -moz-user-select: none;
+	    -webkit-user-select: none;
+	    -ms-user-select: none;
+	    margin-right: 0.0625rem;
+	    border-radius: 0;
+	    display: inline-block;
+	    padding: 14px !important;
+	    &:hover{
+	    	background: lighten($bt-red, 10%);
+	    }
+	  }
+	  a, button {
+	    color: #0a0a0a;
+	    display: block;
+	    padding: 0.1875rem 0.625rem;
+	    border-radius: 0;
+	    text-decoration: none;
+	  }
+	  a:hover, button:hover {
+	    background: transparent;
+	  }
+	  .current {
+	    // padding: 0.1875rem 0.625rem;
+	    background: $bt-red;
+	    color: #fefefe;
+	    cursor: default;
+	  }
+	  .disabled {
+	    padding: 0.1875rem 0.625rem;
+	    color: #cacaca;
+	    cursor: default;
+	    &:hover {
+	      background: transparent;
+	    }
+	  }
+	  .ellipsis::after {
+	    content: '…';
+	    padding: 0.1875rem 0.625rem;
+	    color: #0a0a0a;
+	  }
+	  a, button {
+	    cursor: pointer;
+	  }
+	  .pagination-previous {
+	    a::before, &.disabled::before {
+	      content: '«';
+	      display: inline-block;
+	      margin-right: 0.5rem;
+	    }
+	  }
+	  .pagination-next {
+	    a::after, &.disabled::after {
+	      content: '»';
+	      display: inline-block;
+	      margin-left: 0.5rem;
+	    }
+	  }
+	  .show-for-sr {
+	    position: absolute !important;
+	    width: 1px;
+	    height: 1px;
+	    overflow: hidden;
+	    clip: rect(0, 0, 0, 0);
+	  }
 	}
-	a:hover, button:hover {
-		background: transparent;
-	}
 }
-.ngx-pagination .current {
-	background: transparent !important;
-	// opacity: 0.45;
-	color: #cacaca !important;
-}
+// .ngx-pagination li {
+// 	padding: 14px !important;
+// 	a {
+// 		color: $bt-blue !important;
+// 	}
+// 	a:hover, button:hover {
+// 		background: transparent;
+// 	}
+// }
+// .ngx-pagination .current {
+// 	background: transparent !important;
+// 	// opacity: 0.45;
+// 	color: #cacaca !important;
+// }
+

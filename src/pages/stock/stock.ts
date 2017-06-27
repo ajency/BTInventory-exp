@@ -36,7 +36,7 @@ export class StockPage {
   private companyActiveChannels: any = [];
   private showListLoading: boolean = false;
   private defaultFilters = {
-    limit: 20,
+    limit: 5,
     page: 1
   }
   private dummyProducts = [];

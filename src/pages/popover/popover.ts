@@ -14,7 +14,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PopoverPage {
 
+  private data: any = [];
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.data = navParams.get('data');
+    console.log("popover navParams data" + this.data);
+
   }
 
   ionViewDidLoad() {

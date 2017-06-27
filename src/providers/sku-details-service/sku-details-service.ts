@@ -49,7 +49,7 @@ export class SkuDetailsServiceProvider {
     this.filters["page"] = 1;
     this.filters["pfFilter"] = '';
     this.filters["sku"] = '';
-    this.filters["skuFilter"] = '';
+    this.filters["skuFilter"] = 'sku';
     this.filters["sortField"]  = 'sellable';
     this.filters["sortType"]  = 'DESC';
     this.filters["type"] = 'active';

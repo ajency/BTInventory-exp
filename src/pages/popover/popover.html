@@ -12,14 +12,9 @@
 
 </ion-header> -->
 
-
 <ion-content>
-		<div>
-			<b >1</b> x <span style="display: inline-flex; font-size: 12px;" class="sku_code_black"> Gati-phone-1 </span>
-			<label class="">iPhone 5c Red 16GB -Gati-phone-1</label>
-		</div>
-		<div>
-			<b >1</b> x <span style="display: inline-flex; font-size: 12px;" class="sku_code_black"> Gati-phone-1 </span>
-			<label class="">iPhone 5c Red 16GB -Gati-phone-1</label>
+		<div *ngFor="let item of data">
+			<b> {{ item.bd.quantity }}</b> x <span style="display: inline-flex; font-size: 12px;" class="sku_code_black"> {{ item.sku.custom_code }} </span>
+			<label class="">{{ item.sku.readable_name }}</label>
 		</div>
 </ion-content>

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController, PopoverController
 import { Location } from '@angular/common';
 import {EnvVariables} from "../../app/ev/ev.token";
 import { SkuDetailsServiceProvider } from '../../providers/sku-details-service/sku-details-service';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 @IonicPage()
 @Component({
@@ -17,7 +18,8 @@ export class StockPage {
               public modalCtrl: ModalController,
               public popoverCtrl: PopoverController,
               @Inject(EnvVariables) public envVariables,
-              public skuDetailsAPI: SkuDetailsServiceProvider
+              public skuDetailsAPI: SkuDetailsServiceProvider,
+              public splashScreen: SplashScreen
   ) {
 
     this.getSkusCounts();
@@ -67,8 +69,7 @@ export class StockPage {
 
   private paginationConfig: any = {
     itemsPerPage: this.filters.limit,
-    currentPage: this.filters.page,
-    totalItems: this.filters.limit,
+    currentPage: this.filters.page
   };
 
   private pageChanged(page): void{
@@ -146,8 +147,11 @@ export class StockPage {
       modal.present();
   }
 
-  showPopover(event) {
-      let popover = this.popoverCtrl.create('PopoverPage');
+  showPopover(event, data) {
+      console.log(data);
+      let data1 = [];
+      data1 = data;
+      let popover = this.popoverCtrl.create('PopoverPage', { "data" : data1 });
       popover.present({
       	ev:event
       });
@@ -216,6 +220,7 @@ export class StockPage {
           this.skuCounts = res.data;
           this.paginationConfig.totalItems = this.skuCounts.active;
           this.setPageCounts();
+          this.splashScreen.hide();
           resolve(res.data)
         })
         .catch((err) => {
@@ -224,6 +229,7 @@ export class StockPage {
           this.paginationConfig.totalItems = this.skuCounts.active;
           console.log(this.skuCounts);
           this.setPageCounts();
+          this.splashScreen.hide();
           resolve(err)
         });
     });

@@ -5,7 +5,9 @@ import {EnvVariables} from "../../app/ev/ev.token";
 import { SkuDetailsServiceProvider } from '../../providers/sku-details-service/sku-details-service';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-@IonicPage()
+@IonicPage({
+  'segment' : 'products'
+})
 @Component({
   selector: 'page-stock',
   templateUrl: 'stock.html',

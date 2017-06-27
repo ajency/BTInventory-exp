@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { Location } from '@angular/common';
 import {EnvVariables} from "../../app/ev/ev.token";
 import { SkuDetailsServiceProvider } from '../../providers/sku-details-service/sku-details-service';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 @IonicPage()
 @Component({
@@ -16,7 +17,8 @@ export class StockPage {
               private location: Location,
               public modalCtrl: ModalController,
               @Inject(EnvVariables) public envVariables,
-              public skuDetailsAPI: SkuDetailsServiceProvider
+              public skuDetailsAPI: SkuDetailsServiceProvider,
+              public splashScreen: SplashScreen
   ) {
 
     this.getSkusCounts();
@@ -66,8 +68,7 @@ export class StockPage {
 
   private paginationConfig: any = {
     itemsPerPage: this.filters.limit,
-    currentPage: this.filters.page,
-    totalItems: this.filters.limit,
+    currentPage: this.filters.page
   };
 
   private pageChanged(page): void{
@@ -208,6 +209,7 @@ export class StockPage {
           this.skuCounts = res.data;
           this.paginationConfig.totalItems = this.skuCounts.active;
           this.setPageCounts();
+          this.splashScreen.hide();
           resolve(res.data)
         })
         .catch((err) => {
@@ -216,6 +218,7 @@ export class StockPage {
           this.paginationConfig.totalItems = this.skuCounts.active;
           console.log(this.skuCounts);
           this.setPageCounts();
+          this.splashScreen.hide();
           resolve(err)
         });
     });

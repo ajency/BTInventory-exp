@@ -1,0 +1,14 @@
+page-popover {
+	.content{
+		padding: 12px 15px;
+		label{
+			margin: 5px 0;
+			display: inline-block;
+		}
+	}
+}
+.popover-md .popover-content{
+	width: auto;
+	margin-left: 50px;
+	margin-top: -15px;
+}

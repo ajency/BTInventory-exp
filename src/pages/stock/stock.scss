@@ -243,6 +243,7 @@ page-stock {
 	    font-weight: bold;
 	    display: inline-block;
 	    padding: 4px 8px;
+	    margin-right: -3px;
 	}
 
 	.prod-title{
@@ -272,6 +273,13 @@ page-stock {
 		position: relative;
 		top: 2px;
 		left: 5px;
+	}
+
+	.bundle-link{
+		border-bottom-style: dotted;
+		border-bottom-width: 1px;
+		width: auto;
+		color: gray;
 	}
 
 	.prod-family{

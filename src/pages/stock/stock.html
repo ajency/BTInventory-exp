@@ -17,7 +17,7 @@
 				<li class="sku-menu__title hasub"><h1>Inventory</h1></li>
 				<li class="sku-menu__wrap hidden-xs-inline-block">
 					<ul class="sku-menu__full">
-						<li><a>Stock</a></li>
+						<li><a class="active">Stock</a></li>
 						<li><a>Manage Stock</a></li>
 						<li><a>Listing Watch</a></li>
 					</ul>
@@ -42,7 +42,7 @@
 						<li [class.active]="statusTab.stock_outs.active"><a (click)="changeStockStatusTab('stock_outs')"  class="">Stock-outs (<span class="text-danger">{{ skuCounts.stock_outs | number }}</span>)</a></li>
 						<li [class.active]="statusTab.bundles.active"><a (click)="changeStockStatusTab('bundles')"  class="">Bundles ({{ skuCounts.bundles | number }})</a></li>
 						<li [class.active]="statusTab.allSkus.active"><a (click)="changeStockStatusTab('allSkus')"  class="">All ({{ skuCounts.allSkus | number }})</a></li>
-						<li [class.active]="statusTab.unlisted.active"><a (click)="changeStockStatusTab('unlisted')"  class="">Unlisted ({{ skuCounts.unlisted | number }})</a></li>
+						<li [class.active]="statusTab.unlisted.active"><a (click)="changeStockStatusTab('unlisted')"  class="">Unlisted (<span class="text-danger">{{ skuCounts.unlisted | number }}</span>)</a></li>
 						<li [class.active]="statusTab.archived.active"><a (click)="changeStockStatusTab('archived')"  class="">Archived ({{ skuCounts.archived | number }})</a></li>
 					</ul>
 				</li>

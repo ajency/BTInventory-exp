@@ -53,6 +53,10 @@
 			cursor: pointer;
 			display: block;
 			text-decoration: none;
+			&.active{
+				background-color: $bt-grey;
+				font-weight: bold;
+			}
 		}
 		// &:first-child {
 		// 	font-size: 18px;

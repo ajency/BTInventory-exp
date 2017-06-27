@@ -352,7 +352,7 @@
 						<strong class="mobile-title">Sellable</strong>
 					</div>
 					<div class="sellable-summary">
-						<strong margin-bottom [ngClass]="(item.in_stock > 0 && item.in_stock <= item.low_stock_level) ? 'big yellow-count' : item.in_stock < 0 ? 'big red-count' : item.in_stock === 0 ? 'big red-count' : 'big text-success'">{{ item.in_stock }}</strong>
+						<strong margin-bottom [ngClass]="(item.in_stock > 0 && item.in_stock <= item.low_stock_level) ? 'big yellow-count' : item.in_stock < 0 ? 'big red-count' : item.in_stock === 0 ? 'big red-count' : 'big text-success'">{{ item.in_stock | number }}</strong>
 
 						<div class="tooltip" *ngIf="item.warehouse_is_low_stock == 1">
 							<ion-icon name="information-circle" class="text-warning"></ion-icon>
@@ -371,14 +371,14 @@
 						<div *ngIf="item.in_stock === 0" class="red-count">Out</div>
 					</div>
 
-					<p class="text-info">Seller Stocked : {{ item.seller_in_stock }}</p>
-					<p class="text-grey">MP Stocked : {{ item.marketplace_in_stock }}</p>
+					<p class="text-info">Seller Stocked : {{ item.seller_in_stock | number }}</p>
+					<p class="text-grey">MP Stocked : {{ item.marketplace_in_stock | number }}</p>
 				</div>
 				<div class="tabular__cell cell-2 t-ship">
 					<div class="visible-xs">
 						<strong class="mobile-title">To Ship</strong>
 					</div>
-					<strong class="big">{{ item.to_ship }}</strong>
+					<strong class="big">{{ item.to_ship | number }}</strong>
 				</div>
 				<div class="tabular__cell cell-4 t-channel">
 					<div class="visible-xs">
